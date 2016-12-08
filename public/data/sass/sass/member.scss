@@ -1,0 +1,232 @@
+@import "compass/reset", "_common";
+#step {
+    li.off {
+        .step1 {
+            background-image: url($hostname+$imagepath+'member/step1_off.png');
+        }
+        .step2 {
+            background-image: url($hostname+$imagepath+'member/step2_off.png');
+        }
+        .step3 {
+            background-image: url($hostname+$imagepath+'member/step3_off.png');
+        }
+    }
+    li.on {
+        .step1 {
+            background-image: url($hostname+$imagepath+'member/step1_on.png');
+        }
+        .step2 {
+            background-image: url($hostname+$imagepath+'member/step2_on.png');
+        }
+        .step3 {
+            background-image: url($hostname+$imagepath+'member/step3_on.png');
+        }
+    }
+}
+#page3 {
+    /*height: (1772px / 2);*/
+    .title-box {
+        height: (410px / 2);
+        margin-top: (214px / 2);
+        overflow:visible;
+    }
+    .title {
+        position: relative;
+//        margin-left: auto;
+//        margin-right: auto;
+//        width: (518px / 2);
+        height: (184px / 2);
+        h2 {
+            text-indent: -9999px;
+            position: absolute;
+            left: 50%;
+            width: (518px / 2);
+            height: (184px / 2);
+            margin-left: (-518px / 2 / 2);
+            background-image: url($hostname+$imagepath+'member/entry_complete_title.png');
+            background-size: (518px / 2) (184px/2);
+            background-position: center center;
+            background-repeat: no-repeat;        
+        }
+    }    
+    .text1 {
+        display: block;
+        position: relative;
+        margin-top: (42px / 2);
+        margin-left: auto;
+        margin-right: auto;
+        width: (518px / 2);
+        height: (184px / 2);
+        background-image: url($hostname+$imagepath+'member/entry_complete_text1.png');
+        background-size: (518px / 2) (184px/2);
+        background-position: center center;
+        background-repeat: no-repeat;   
+    }
+    .background-top {
+        position: absolute;
+        bottom: (502px / 2);
+        width: 100%;
+        height: (80px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;        
+
+        mask-image: url($hostname+$imagepath+'member/entry_complete_background_mask.png');
+        -webkit-mask-image: url($hostname+$imagepath+'member/entry_complete_background_mask.png');
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat:no-repeat;
+        mask-position: left top;
+        -webkit-mask-position:center center;
+        mask-size: 100% (80px / 2);
+        mask-image-size: 100% (80px / 2);
+        -webkit-mask-size: 100% (80px / 2);
+        line-height: 0px;
+    }
+    .box {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: (502px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;
+        overflow:visible;
+        z-index: 100;
+        .item {
+            margin-left: auto;
+            margin-right: auto;
+            width: (518px / 2);
+            background-position: center center;
+            background-repeat: no-repeat;                    
+        }
+        .baloon {
+            width: (618px / 2);
+            overflow:visible;
+            .baloon-item {
+                position: absolute;
+                left: 50%;
+                top: (-14px / 2);
+                margin-left: (-618px / 2 / 2);
+                width: (618px / 2);
+                height: (196px / 2);
+                background-image: url($hostname+$imagepath+'member/entry_complete_baloon.png');
+                background-size: (618px / 2) (196px/2);                                            
+            }
+        }
+        .animation {
+            width: (496px / 2);
+            height: (236px / 2);
+            overflow:visible;
+            margin-top: (130px / 2);
+        }
+    }
+}
+#page4 {
+    .select-box {
+        .title {
+            width: 100%;
+            height: (252px / 2);
+            position: relative;
+            margin-top: percentage(239px / 1206px);
+            overflow: visible;
+            h2 {
+                display: block;
+                width: (614px / 2);
+                height: (252px / 2);
+                text-indent: -9999px;
+                position: absolute;
+                left: 50%;
+                top: 0;
+                margin-left: floor(-614px / 2 / 2);
+                background-image: url($hostname+$imagepath+'member/tap_txt.png');
+                background-size: (614px/2) (252px/2);
+                background-position: left top;
+                background-repeat: no-repeat;
+
+            }
+        }
+        .item {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .animation {
+            width: (618px / 2);
+            height: (374px / 2);
+            overflow: visible;
+            margin-top: (40px / 2);
+        }
+        .caution {
+            text-indent: -9999px;
+            overflow: hidden;
+            display: block;
+            width: (564px / 2);
+            height: (26px / 2);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: (66px / 2);
+            background-image: url($hostname+$imagepath+'member/tap_caution.png');
+            background-size: (564px/2) (26px/2);
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+        .btn-set{
+            background: none;
+            .ok-btn {
+                background-image: url($hostname+$imagepath+'member/tap_btn_txt.png');
+                background-size: (70px / 2) (34px/2);  
+            }
+        }        
+    }
+    .number-box {
+        display: none;
+        position: absolute;
+        width: (410px / 2);
+        height: (378px / 2);
+        left: 50%;
+        top: 50%;
+        margin-left: floor(-410px / 2 / 2);
+        margin-top: floor(-378px / 2 / 2);
+        background-image: url($hostname+$imagepath+'member/heart_small.png');
+        background-size: (410px / 2) (378px / 2);  
+        background-position: left top;
+        background-repeat: no-repeat;
+        .number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: (90px / 2);
+            height: (134px / 2);
+            margin-left: floor(-90px / 2 / 2);
+            margin-top: floor(-134px / 2 / 2);
+            background-size: (90px / 2) (134px / 2);  
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+        .is-number2 {
+            background-image: url($hostname+$imagepath+'member/heart_2.png');            
+        }
+        .is-number3 {
+            background-image: url($hostname+$imagepath+'member/heart_3.png');            
+        }
+        .is-number4 {
+            background-image: url($hostname+$imagepath+'member/heart_4.png');            
+        }
+        .is-number5 {
+            background-image: url($hostname+$imagepath+'member/heart_5.png');            
+        }
+        .is-number6 {
+            background-image: url($hostname+$imagepath+'member/heart_6.png');            
+        }
+        .is-number7 {
+            background-image: url($hostname+$imagepath+'member/heart_7.png');            
+        }
+        .is-number8 {
+            background-image: url($hostname+$imagepath+'member/heart_8.png');            
+        }
+    }
+}
+
+
+

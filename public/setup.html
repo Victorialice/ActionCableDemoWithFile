@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/share.css"/>
+<title>Setup</title>
+</head>
+<body>
+<div id="wrapper">
+<form>
+url:
+<input type="text" id="url" value="member.html"/>
+<br />
+gid:
+<input type="text" id="gid" value="dummy" />
+<br />
+num:
+<input type="text" id="num" value="7"/>
+<br />
+width:
+<input type="text" id="win-w" value="375"/>
+height:
+<input type="text" id="win-h" value="603" />
+<br />
+network:
+<select id="network">
+  <option value="">no select</option>
+  <option value="4">high (4)</option>
+  <option value="3">upper middle (3)</option>
+  <option value="2">lower middle (2)</option>
+  <option value="1">low (1)</option>
+  <option value="0">super low (0)</option>
+</select>
+<br />
+<button id="btn-open">Open Window</button>
+debug: <input type="checkbox" id="debug-cb" />
+<button id="btn-close">Close Window</button>
+<button id="btn-pic">Select Picture</button>
+<button id="btn-upload">Upload All</button>
+</form>
+</div>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script>
+var windows = [];
+$(function(){
+  $("#btn-open").on("click", function(e){
+    e.preventDefault();
+    windows = [];
+    var gid = "n02xcjw7";
+    var num = $("#num").val();
+    var width = $("#win-w").val();
+    var height = $("#win-h").val();
+    var network = $("#network").val();
+    //var url = "http://localhost:3000/member.html?gid="+gid;
+    var url = $("#url").val()+"?gid="+$("#gid").val()+"&network="+network;
+    var chld = "0";
+    var winid = "win"+chld;
+    var option = {};
+    option.width = width;
+    option.height = height;
+    var maxRow = Math.floor(window.screen.width / width);
+    var len = parseInt(num)+1;
+    for(var i=1; i < len; i++)
+    {
+      var otptionValue = "scrollbars=0";
+      var row = (i%maxRow);
+      option.left = width*row;
+  //    console.log("maxRow=" + maxRow + " row=" + row + " i="+i);
+      option.top = height*Math.floor(i/maxRow);
+      for(var key in option)
+      {
+        var value = ","+key+"="+option[key];
+        otptionValue += value;
+      }
+  //    console.log(otptionValue);
+    if($("#debug-cb").is(":checked")) url += "&debug=1"
+      var win = window.open(url, "_blank", otptionValue, false);
+      windows.push(win)
+    }
+    return false;    
+  });
+  $("#btn-close").on("click", function(e){
+    e.preventDefault();
+    for(var i= 0; i< windows.length; i++)
+    {
+      var win = windows[i];
+      win.close();
+    }
+    return false;    
+  });
+  $("#btn-pic").on("click", function(e){
+    e.preventDefault();
+//    for(var i= windows.length-1; i>=0; i--)
+    for(var i= 0; i<windows.length; i++)
+    {
+      var win = windows[i];
+      win.global_entry.gotoPage("page2");
+    }
+    return false;    
+  });
+  $("#btn-upload").on("click", function(e){
+    e.preventDefault();
+//    for(var i= windows.length-1; i>=0; i--)
+    for(var i= 0; i<windows.length; i++)
+    {
+      var win = windows[i];
+      win.global_entry.uploadTest();
+    }
+    return false;    
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+

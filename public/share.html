@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/share.css"/>
+<title>Share</title>
+</head>
+<body>
+<div id="wrapper">
+    <div class="main">
+        <div class="share-iamge-box">
+            <p class="cheer">长按图片可将图片保存至相册哦！</p>
+        </div>
+        <img id="share-iamge"></img>
+        <div id="player-menu-box">
+            <ul>
+                <li class="top player-menu-btn"><a id="share-btn" class="share-btn green active-btn" href="#share">SHARE</a></li>
+                <li class="player-menu-btn"><a id="top-btn" class="top-btn red active-btn" href="#top">TOP</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="float">
+        <img></img>
+    </div>
+</div>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.easing.1.3.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/preloadjs-0.6.2.min.js"></script>
+<script src="data/js/config.js"></script>
+<script src="data/js/common.js"></script>
+<script src="data/js/jweixin-1.0.0.js"></script>
+<script src="data/js/wechat.js"></script>
+<script>
+var global_com = new Common();
+var query = global_com.getQueryString();
+if(query==null || query.gid==undefined || query.gid=="") location.href = "index.html";
+$(document).ready(function(){
+    var url = "/uploads/" + query.gid + "/share/original.jpg";
+    $("#share-iamge").on("load", function(){
+        $("#share-iamge, #player-menu-box").fadeIn(500);
+        setTimeout(function(){
+            global_com.jumpShow("#wrapper .share-iamge-box .cheer");
+        }, 500);
+    });
+    $("#share-iamge").attr("src", url);
+    $(".float img").attr("src", Config.basepath + "images/share/float.png");
+    var wh = $(window).height();
+    $(".float").height(wh);
+    $("#share-btn").on("click", function(e){
+        e.preventDefault();
+        $(".float").fadeIn(500);
+    });
+    $(".float").on("click", function(e){
+        e.preventDefault();        
+        $(".float").fadeOut(500);
+    });
+    $("#top-btn").on("click", function(e){
+        e.preventDefault();        
+        $(".main").fadeOut(500);
+        setTimeout(function(){
+            location.href = Config.topUrl;
+        }, 500);
+    });
+});
+Config.snsTitle = Config.snsUserTitle;
+Config.snsDesc = Config.snsUserDesc;
+Config.snsImgUrl = Config.snsUserImgUrl;
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,29 @@
+<style type="text/css">
+	div#qr, div#content{
+  margin: 0 auto;
+  text-align: center;
+	}
+
+	div#content{
+  margin-top: 30px;
+	}
+</style>
+
+<div id="content">
+	<h1>/api/message</h1>
+	<%= form_tag "/api/message" do %>
+	<p>
+		<%= label_tag :gid %>
+		<%= text_field_tag :gid, session[:group_id] %>
+	</p>
+	<p>
+		<%= label_tag :message_id %>
+		<%= text_field_tag :message_id %>
+	</p>
+	<p>
+		<%= submit_tag %>
+		<% end %>
+		<br/>
+		<br/>
+		<br/>
+</div>

@@ -1,0 +1,43 @@
+<%= image_tag session[:assigned_url] %>
+<p>group id: <%= session[:group_id] %></p>
+<p>user_id: <%= session[:user_id] %></p>
+<br/>
+<%= link_to "/api/message", "/api_test/message", target: "_blank" %><br/><br/>
+
+<div>
+	<%= link_to "user upload", "/group/#{session[:group_id]}/leader/#{session[:user_id]}/user_upload", target: "_blank" %>
+</div>
+
+<h2>Socket API Test<h2>
+		<span id="drift_boat" data-users-count="1" data-group-id="<%= session[:group_id] %>" data-user-id="<%= session[:user_id] %>"></span>
+
+		<div>
+			<p>
+				user_upload_success
+				<span id="user_upload_success"></span>
+			</p>
+			<p>
+				<%= link_to "user_network", "#", id: "user_network" %>
+				<span id="user_network"></span>
+			</p>
+			<p>
+				<%= link_to "user_upload_close", "#", id: "user_upload_close" %>
+				<span id="user_upload_close_success"></span>
+			</p>
+			<p>
+				<%= link_to "user_turn_reset", "#", id: "user_turn_reset" %>
+				<span id="user_turn_reset_success"></span>
+			</p>
+			
+			<p>
+				<%= link_to "loading_start", "#", id: "loading_start" %>
+				<span id="loading_start_success"></span>
+			</p>
+
+			<p>
+				<%= link_to "user_download_success", "#", id: "user_download_success" %>
+				<span id="user_download_success"></span>
+			</p>
+
+		</div>
+</div>

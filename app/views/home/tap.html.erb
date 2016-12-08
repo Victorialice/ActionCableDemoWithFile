@@ -1,0 +1,37 @@
+<style type="text/css">
+	div#qr, div#content{
+  text-align: center;
+	}
+
+	div#content{
+  margin-top: 30px;
+	}
+	ul#drift_avatars li{
+	width:300px;
+	float: left
+	}
+</style>
+
+
+<div id="content">
+	<span id="drift_boat" data-users-count="<%= @group.users.count %>" data-group-id="<%= @group.group_id %>" data-user-id="<%= @user.id %>"></span>
+
+	<p style="font-size:36px">
+		<span>
+			<%= @user.num %>
+		</span>
+	</p>
+	<ul id="drift_avatars">
+		<li>
+			<%= image_tag @user.avatar.thumb.url, width: "300px" %>
+		</li>
+	</ul>
+	<p style="clear:both"></p>
+	<%if  @user.num == 1 %>
+	<div id="elapsed" style="text-align:right;font-size:130%;position:fixed;z-index:110;width:100px;height:50px;top:20px;right:20px;"></div>
+	<p style="font-size:32px">
+		<span><a id="magic_start" href="javascript:void(0)">START</a></span>
+	</p>
+	<% end %>
+</div>
+<script src="/js/tap.js"></script>

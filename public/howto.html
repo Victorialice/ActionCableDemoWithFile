@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/howto.css"/>
+<title>Howto</title>
+</head>
+<body>
+<div id="wrapper">
+    <div class="main">
+        <div class="info">
+            <img src=""></img>
+        </div>
+        <div class="btn-set">
+            <a href="#" class="btn active-btn"></a>
+        </div>
+    </div>
+    <div id="loading">
+        <div class="loading-item"></div>
+    </div>
+</div>
+<script src="/scripts/action_cable.js" ></script>
+<script src="/scripts/cable.self.js" ></script>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.easing.1.3.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/preloadjs-0.6.2.min.js"></script>
+<script src="data/js/config.js"></script>
+<script src="data/js/common.js"></script>
+<script src="data/js/api.js"></script>
+<script src="data/js/jweixin-1.0.0.js"></script>
+<script src="data/js/wechat.js"></script>
+<script>
+var global_com = new Common();
+var global_api = new API();
+var query = global_com.getQueryString();
+var loading = new Loading(global_com);
+//if(query==null || query.type==undefined) location.href = Config.topUrl;
+if(query.type == "1") var imgSrc = "leader/howto.jpg";
+if(query.type == "2"){
+    var imgSrc = "member/howto.jpg";
+    $("#wrapper .main .btn-set").remove();
+}
+var loadImages = [imgSrc];
+loading.on("loading_complete", function(e){
+    console.log("loading_complete");
+    loading.off(e);
+    var url = Config.basepath + "images/" + imgSrc;
+    $(".info img").attr("src", url);
+    $("#loading").remove();
+    $(".main").fadeIn(500);
+});
+loading.start(loadImages);
+var global_api = new API();
+global_api.checkConnections();
+$(function () {
+    $(window).on("resize orientationchange", function() {
+        var w = $("#wrapper").width();
+        var h = Math.floor(1206/750*w);
+        var ww = $(window).width();
+        var wh = $(window).height();
+        var s =  ww / 375;
+        $("#loading").css("height", wh+"px");
+    });
+    $(window).resize();
+    $(".active-btn").on("touchstart", function(e){
+        e.stopPropagation();
+        $(this).addClass("press");
+    });
+    $(".active-btn").on("touchend touchcancel", function(e){
+        e.stopPropagation();
+        $(this).removeClass("press");
+    });
+    $("#wrapper .main .btn-set a").attr("href", Config.leaderUrl)
+});
+setTimeout(function(){
+    if(global_api.connected)
+    {
+        global_api.disconnect();
+        return;
+    }
+    window.location.href = Config.errorUrl+"?code=F00006";
+},2000);
+global_api.connection();
+</script>
+</body>
+</html>
+
+
+
+

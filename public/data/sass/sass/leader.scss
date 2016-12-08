@@ -1,0 +1,814 @@
+@import "compass/reset", "_common";
+
+#page3 {
+    .title {
+        position: relative;
+        margin-top: (216px / 2);
+        width: 100%;
+        height: (216px / 2);
+        overflow:visible;
+        z-index: 100;
+        .background {
+            position:absolute;
+            left: 0;
+            top: (74px / 2);
+            width: 100%;
+            height: (144px / 2);
+            position:relative;
+            background-image: url($hostname+$imagepath+'common/pink_dot.png');
+            background-size: (16px/2) (16px/2);
+            background-position: left top;
+            background-repeat: repeat;        
+
+            mask-image: url($hostname+$imagepath+'leader/message_pink_dot_mask.png');
+            -webkit-mask-image: url($hostname+$imagepath+'leader/message_pink_dot_mask.png');
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat:no-repeat;
+            mask-position: left top;
+            -webkit-mask-position:center center;
+            mask-size: 100% (144px / 2);
+            mask-image-size: 100% (144px / 2);
+            -webkit-mask-size: 100% (144px / 2);
+            line-height: 0px;
+        }
+        h2{
+            display: block;
+            text-indent: -9999px;
+            overflow:hidden;
+            position:absolute;
+            left: 50%;
+            top:0;
+            margin-left: ((-606px / 2) / 2);
+            background-image: url($hostname+$imagepath+'leader/message_title.png');
+            background-repeat: no-repeat;
+            background-size: (606px / 2) (214px / 2);
+            background-position: top center;            
+            width: (606px / 2);
+            height: (214px / 2);
+        }
+        .cookie {
+            z-index: 99;
+            display: block;
+            position:absolute;
+        }
+        .cookie-l {
+            width: (100px / 2);
+            height: (94px / 2);
+            background-image: url($hostname+$imagepath+'leader/cookie_l2.png');
+            background-size: (100px / 2) (94px / 2);
+            left: 50%;
+            top: (-10px / 2);
+            margin-left: (-348px / 2);
+        }
+        .cookie-r {
+            width: (128px / 2);
+            height: (116px / 2);
+            background-image: url($hostname+$imagepath+'leader/cookie_r2.png');
+            background-size: (128px / 2) (116px / 2);
+            right: 0;
+            left: 50%;
+            top: (74px / 2);
+            margin-left: (224px / 2);
+        }
+    }
+    #message-form {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: (1352px / 2);
+        padding-left: percentage(30px / 750px);
+        padding-top: (24px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;
+        .message-item {
+            text-align:center;
+            background-color: #faecee;
+            border-radius:10px;
+            width: percentage( 690px / 750px);
+            height: (94px / 2);
+            margin-top: (38px / 2);
+            label {
+                float: left;
+                display: block;
+                background-position: center center;
+                background-repeat: no-repeat;        
+                margin-left: percentage(20px / 690px);
+                width: percentage((690px - 20px - 42px) / 690px);
+                height: (94px / 2);
+                text-indent: -9999px;
+                overflow: hidden;
+                padding-left: percentage(10px / 690px);
+            }
+            input[type=radio],
+            input[type=radio] + label{
+                position: relative;
+                 
+                display: inline-block;                 
+                font-size: 14px;
+                line-height: 30px;
+                 
+                cursor: pointer;
+            }             
+            @media (min-width: 1px) {
+                input[type=radio]{
+                    display: none;
+                    margin: 0;
+                }
+                input[type=radio] + label{
+/*                    padding: 0 0 0 24px;*/
+                }
+                input[type=radio] + label::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                     
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    display: block;
+                    width: (48px / 2);
+                    height: (48px / 2);
+                    margin-top: (-48px / 2 / 2);
+                     
+                    background: #FFF;
+                }
+                input[type=radio] + label::before {
+                    border: 2px solid #fa8e9c;
+                    border-radius: 48px;
+                }
+                input[type=radio]:checked + label::after{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: ((48px - 36px) / 2 / 2);                     
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    display: block;
+                    
+                    width: (36px / 2);
+                    height: (36px / 2);
+                    margin-top: (-36px / 2 / 2);
+                     
+                    background: #f0495f;
+                    border-radius: (36px / 2);
+                }
+                .message01 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt01.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message02 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt02.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message03 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt03.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message04 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt04.png');
+                    background-size: (400px/2) (42px/2);
+                }
+                .message05 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt05.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message06 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt06.png');
+                    background-size: (408px/2) (42px/2);
+                }
+                .message07 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt07.png');
+                    background-size: (408px/2) (42px/2);
+                }
+                .message08 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt08.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message09 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt09.png');
+                    background-size: (376px/2) (42px/2);
+                }
+                .message10 {
+                    background-image: url($hostname+$imagepath+'leader/message_txt10.png');
+                    background-size: (376px/2) (42px/2);
+                }
+
+            }
+
+        }
+    }
+}
+#page4 {
+    /*height: (1772px / 2);*/
+    .title-box {
+        height: (410px / 2);
+        margin-top: (214px / 2);
+        overflow:visible;
+    }
+    .title {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: (518px / 2);
+        height: (184px / 2);
+        background-image: url($hostname+$imagepath+'leader/entry_complete_title.png');
+        background-size: (518px / 2) (184px/2);
+        background-position: center center;
+        background-repeat: no-repeat;        
+    }    
+    .text1 {
+        display: block;
+        position: relative;
+        margin-top: (42px / 2);
+        margin-left: auto;
+        margin-right: auto;
+        width: (518px / 2);
+        height: (184px / 2);
+        background-image: url($hostname+$imagepath+'leader/entry_complete_text1.png');
+        background-size: (518px / 2) (184px/2);
+        background-position: center center;
+        background-repeat: no-repeat;   
+    }
+    .background-top {
+        width: 100%;
+        height: (80px / 2);
+        margin-top: (30px / 2);
+        position:relative;
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;        
+
+        mask-image: url($hostname+$imagepath+'leader/entry_complete_background_mask.png');
+        -webkit-mask-image: url($hostname+$imagepath+'leader/entry_complete_background_mask.png');
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat:no-repeat;
+        mask-position: left top;
+        -webkit-mask-position:center center;
+        mask-size: 100% (80px / 2);
+        mask-image-size: 100% (80px / 2);
+        -webkit-mask-size: 100% (80px / 2);
+        line-height: 0px;
+    }
+    .box {
+        width: 100%;
+        height: (808px / 2);
+        position:relative;
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;
+        overflow:visible;
+        .item {
+            margin-left: auto;
+            margin-right: auto;
+            width: (518px / 2);
+            background-position: center center;
+            background-repeat: no-repeat;                    
+        }
+        .baloon1 {
+            height: (156px / 2);
+            background-image: url($hostname+$imagepath+'leader/entry_complete_baloon1.png');
+            background-size: (518px / 2) (156px/2);
+        } 
+        .peaple {
+            height: (184px / 2);
+            background-image: url($hostname+$imagepath+'leader/entry_complete_peaple.png');
+            background-size: (518px / 2) (184px/2);
+        } 
+        .text2 {
+            margin-top: (42px / 2);
+            height: (32px / 2);
+            background-image: url($hostname+$imagepath+'leader/entry_complete_text2.png');
+            background-size: (518px / 2) (32px/2);            
+        }
+        .baloon2 {
+            margin-top: (48px / 2);
+            height: (152px / 2);
+            background-image: url($hostname+$imagepath+'leader/entry_complete_baloon2.png');
+            background-size: (518px / 2) (152px/2);            
+        }
+        .animation {
+            width: (518px / 2);
+            height: (222px / 2);
+            margin-top: (-28px / 2);
+        }
+    }
+    .btn-set{
+        padding-left: percentage(30px / 750px);
+        .ok-btn {
+            margin-left: percentage(20px / 750px);
+            margin-top: (40px / 2);
+            width: percentage(650px / 750px);
+        }
+    } 
+}
+#page5 {
+    .title {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: (530px / 2);
+        height: (168px / 2);
+        margin-top: (120px / 2);
+        background-image: url($hostname+$imagepath+'leader/member_entry_title.png');
+        background-size: (530px / 2) (168px/2);
+        background-position: center center;
+        background-repeat: no-repeat;                
+    }
+    #qrcode {
+        width: percentage(480px / 750px);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: (30px / 2);
+        table {
+//            width: 100%;
+            table-layout: fixed;
+            text-align: center;
+            td.black {
+                background-color: #000;
+            }
+            td.white{
+                background-color: #fff;
+            }
+        }        
+    }
+    .number-box {
+        position:relative;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: (90px / 2);
+        width: (294px / 2);
+        height: (40px / 2);
+        overflow:visible;
+        background-image: url($hostname+$imagepath+'leader/no_member_txt.png');
+        background-size: (294px / 2) (40px/2);
+        background-position: center center;
+        background-repeat: no-repeat;                
+        .number {
+            display: block;
+            z-index: 100;
+            position: absolute;
+            top: (-48px / 2);
+            left: (84px / 2);
+            width: (124px / 2);
+            height: (124px / 2);
+            background-image: url($hostname+$imagepath+'leader/entry_number_2.png');
+            background-size: (124px / 2) (124px / 2);
+            background-position: center center;
+            background-repeat: no-repeat;                
+        }
+    }
+    .btn-set {
+        padding-left: percentage(30px / 750px);
+        background:none;
+        margin-top: (48px / 2);
+        .ok-btn {
+            margin-left: percentage(20px / 750px);
+            margin-top: (40px / 2);
+            width: percentage(650px / 750px);
+            background-image: url($hostname+$imagepath+'leader/entry_close_txt.png');
+            background-size: (270px / 2) (34px / 2);
+        }        
+        .disabled {
+            background-image: url($hostname+$imagepath+'leader/entry_close_txt_disabled.png');            
+        }
+    }
+    .float {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: (1206px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot_float_back.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;
+        z-index: 101;
+        .cheer {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: (574px / 2);
+            height: (104px / 2);
+            margin-top: (-490px / 2);
+            margin-left: floor(-574px / 2 / 2);
+            background-image: url($hostname+$imagepath+'leader/cheer_txt.png');
+            background-size: (574px / 2) (104px / 2);
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+        .img {
+            position:absolute;
+            left: 0;
+            top: 50%;
+            width: percentage(540px / 750px);
+            margin-left: percentage(106px / 750px);
+            margin-top:(-316px / 2);
+            display: none;
+            overflow: hidden;
+            z-index: 100;
+            img {
+                width: 98%;
+                padding: 1%;
+            }
+            .border {
+                position:absolute; 
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                border:solid (10px/2) #e44e64;
+                border-radius: 5px;         
+            }
+        }
+    }
+}
+#page6 {
+    .title-box {
+        position: relative;
+        width: (470px / 2);
+        height: (252px / 2);
+        margin-top: (150px / 2);
+        margin-left: auto;
+        margin-right: auto;
+        .text {
+            position: absolute;
+            left: 50%;
+            top: (66px / 2);
+            width: (470px / 2);
+            height: (186px / 2);
+            margin-left: floor(-470px / 2 /2);
+            background-image: url($hostname+$imagepath+'leader/entry_over_txt.png');
+            background-size: (470px / 2) (186px / 2);
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+        .number {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: (198px / 2);
+            height: (182px / 2);
+            margin-left: floor(-198px / 2 /2);
+            background-size: (198px / 2) (182px / 2);
+            background-position: left top;
+            background-repeat: no-repeat;            
+        }
+        .number2 {
+            background-image: url($hostname+$imagepath+'leader/person2.png');
+        }
+        .number3 {
+            background-image: url($hostname+$imagepath+'leader/person3.png');
+        }
+        .number4 {
+            background-image: url($hostname+$imagepath+'leader/person4.png');
+        }
+        .number5 {
+            background-image: url($hostname+$imagepath+'leader/person5.png');
+        }
+        .number6 {
+            background-image: url($hostname+$imagepath+'leader/person6.png');
+        }
+        .number7 {
+            background-image: url($hostname+$imagepath+'leader/person7.png');
+        }
+        .number8 {
+            background-image: url($hostname+$imagepath+'leader/person8.png');
+        }
+    }   
+    .wave {
+        width: 100%;
+        height: (72px / 2);
+        position:absolute;
+        bottom: ((222px / 2) + (464px / 2));
+        margin-top: (48px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;        
+
+        mask-image: url($hostname+$imagepath+'leader/wave.png');
+        -webkit-mask-image: url($hostname+$imagepath+'leader/wave.png');
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat:no-repeat;
+        mask-position: left top;
+        -webkit-mask-position:center center;
+        mask-size: 100% (72px / 2);
+        mask-image-size: 100% (72px / 2);
+        -webkit-mask-size: 100% (72px / 2);
+        line-height: 0px;
+    }
+    .box {
+        display: block;
+        text-indent: -9999px;
+        width: 100%;
+        height: (464px / 2);
+        position:absolute;
+        bottom: (222px / 2);
+        background-image: url($hostname+$imagepath+'common/pink_dot.png');
+        background-size: (16px/2) (16px/2);
+        background-position: left top;
+        background-repeat: repeat;
+        overflow:visible;
+        .box-inner {
+            position: relative;
+            .baloon {
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: (618px / 2);
+                height: (268px / 2);
+                margin-left: floor(-618px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/entry_over_caution.png');
+                background-size: (618px/2) (268px/2);
+                background-position: left top;
+                background-repeat: no-repeat;            
+            }
+            .smartphone {
+                position: absolute;
+                left: 50%;
+                top:(244px / 2);
+                height: (212px / 2);
+                background-position: left top;
+                background-repeat: no-repeat;            
+            }
+            .smartphone2 {
+                width: (198px / 2);
+                margin-left: (-198px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone2.png');
+                background-size: (198px/2) (212px/2);
+            }
+            .smartphone3 {
+                width: (266px / 2);
+                margin-left: (-266px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone3.png');
+                background-size: (266px/2) (212px/2);
+            }
+            .smartphone4 {
+                width: (350px / 2);
+                margin-left: (-350px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone4.png');
+                background-size: (350px/2) (212px/2);
+            }
+            .smartphone5 {
+                width: (434px / 2);
+                margin-left: (-434px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone5.png');
+                background-size: (434px/2) (212px/2);
+            }
+            .smartphone6 {
+                width: (518px / 2);
+                margin-left: (-518px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone6.png');
+                background-size: (518px/2) (212px/2);
+            }
+            .smartphone7 {
+                width: (606px / 2);
+                margin-left: (-606px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone7.png');
+                background-size: (606px/2) (212px/2);
+            }
+            .smartphone8 {
+                width: (690px / 2);
+                margin-left: (-690px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/smartphone8.png');
+                background-size: (690px/2) (212px/2);
+            }            
+        }
+    }
+    .btn-set {
+        position: absolute;
+        bottom:0;
+    }
+    .cookie {
+        position: absolute;
+        display: block;
+        background-position: left top;
+        background-repeat: no-repeat;        
+    }
+    .cookie-l {
+        left: 0;
+        top: (-20px / 2);
+        width: (208px / 2);
+        height: (214px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_l3.png');
+        background-size: (208px / 2) (214px / 2);
+    }
+    .cookie-r {
+        right: 0;
+        top: (98px / 2);
+        width: (160px / 2);
+        height: (358px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_r3.png');
+        background-size: (160px / 2) (358px / 2);
+    }
+}
+#page7 {
+    overflow-y: hidden;
+    .item {
+        text-indent: -9999px;
+        position: absolute;
+        left: 50%;        
+        background-position: left top;
+        background-repeat: no-repeat;
+    }
+    .ready-txt {
+//        top: (274px / 2);
+        top: percentage(274px / 1206px);
+        width: (390px / 2);
+        height: (40px / 2);
+        margin-left: floor(-390px / 2 / 2);
+        background-image: url($hostname+$imagepath+'leader/ready_txt.png');
+        background-size: (390px / 2) (40px / 2);
+    }
+    .text {
+        display: none;
+        z-index: 101;
+        top: min(percentage(150px / 1206px), 12%);
+        width: (542px / 2);
+        height: (260px / 2);
+        margin-left: floor(-542px / 2 / 2);
+        background-image: url($hostname+$imagepath+'leader/start_baloon.png');
+        background-size: (542px / 2) (260px / 2);
+    }
+    .heart {
+        display: block;
+//        top: (412px / 2);
+        top: percentage(412px / 1206px);
+        width: (542px / 2);
+        height: (500px / 2);
+        margin-left: floor(-542px / 2 / 2);
+        background-image: url($hostname+$imagepath+'leader/heart_big.png');
+        background-size: (542px / 2) (500px / 2);
+        transform: scale(0.74, 0.74);
+        .text-box{
+            position: relative;
+            width: (542px / 2);
+            height: (500px / 2);
+            .heart-text {
+                position: absolute;
+                left: 50%;
+                top: 50%;                
+                background-position: center top;
+                background-repeat: no-repeat;
+            }
+            .start-txt{
+                display: none;
+                width: (382px / 2);
+                height: (124px / 2);
+                margin-left: floor(-382px / 2 / 2);
+                margin-top: floor(-124px / 2 / 2);
+                background-image: url($hostname+$imagepath+'leader/start.png');
+                background-size: (382px / 2) (124px / 2);
+            }                
+            .number-txt{
+                width: floor(122px / 2 * 1.35);
+                height: floor(126px / 2 * 1.35);
+                margin-left: floor(-122px / 2 / 2 * 1.35);
+                margin-top: floor(-126px / 2 / 2 * 1.35);
+                background-image: url($hostname+$imagepath+'common/tap_number_1.png');
+                background-size: floor(122px / 2 * 1.35) floor(126px / 2 * 1.35);
+            }                
+        }
+    }
+    .heart.press {
+        background-image: url($hostname+$imagepath+'leader/heart_big_on.png');
+    }
+    .reset {
+        position: absolute;
+        z-index: 101;
+//        top: (962px / 2);
+//        bottom: percentage(154px / 1206px);
+        top: max(percentage(962px / 1206px), 84%);
+        left: min(percentage(151px / 750px), 15%);
+        margin-bottom: percentage(154px / 1206px);
+        display:block;
+        float: left;
+        width: max(percentage(446px / 750px), 70%);
+        height: (90px / 2);
+        text-align:center;
+        text-indent: -9999px;
+        border-radius:10px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color:#9B8178;
+        background-image: url($hostname+$imagepath+'leader/reset_btn_txt.png');
+        background-size: (390px / 2) (34px / 2);
+    }
+    .reset.press  {
+        background-color:#A18A83;            
+    }
+    .cookie {
+        display: none;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .cookie-lt {
+        width: (134px / 2);
+        height: (234px / 2);
+        left: 0;
+        top: (24px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_lt.png');
+        background-size: (134px / 2) (234px / 2);
+    }
+    .cookie-lb {
+        width: (282px / 2);
+        height: (384px / 2);
+        left: 0;
+        bottom: (-32px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_lb.png');
+        background-size: (282px / 2) (384px / 2);
+    }
+    .cookie-rt {
+        width: (302px / 2);
+        height: (226px / 2);
+        right: 0;
+        top: (-8px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_rt.png');
+        background-size: (302px / 2) (226px / 2);
+    }
+    .cookie-rb {
+        width: (106px / 2);
+        height: (194px / 2);
+        right: 0;
+        bottom: (86px / 2);
+        background-image: url($hostname+$imagepath+'leader/cookie_rb.png');
+        background-size: (106px / 2) (194px / 2);
+    }
+}
+.float {
+    #player-menu-box {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 50%;        
+        width: percentage(560px / 750px);
+        margin-left: percentage(95px / 750px);
+        margin-top: floor(-410px / 2 / 2);
+        .player-menu-btn {
+            display:block;
+            width: 100%;
+            overflow: hidden;
+            margin-top: (40px / 2);
+            a {
+                text-indent: -9999px;
+                width: 100%;
+                height: (110px / 2);
+                display:block;
+                text-align:center;
+                border-radius:10px;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+            a.green {
+                background-color: #55ccdd;
+            }
+            a.red {
+                background-color: #fa8e9c;
+            }
+            a.replay-btn {
+                background-image: url($hostname+$imagepath+'leader/replay_btn_txt.png');                    
+                background-size: (218px / 2) (46px / 2);
+            }
+            a.share-btn {
+                background-image: url($hostname+$imagepath+'leader/share_btn_txt.png');                    
+                background-size: (218px / 2) (46px / 2);
+            }
+            a.top-btn {
+                background-image: url($hostname+$imagepath+'leader/gototop_btn_txt.png');                    
+                background-size: (308px / 2) (46px / 2);
+            }
+        }
+        .player-menu-btn:nth-of-type(1) {
+            a.press{
+                    background-color: #69D2E1;
+            } 
+        }
+        .player-menu-btn:nth-of-type(2) {
+            a.press{
+                    background-color: #69D2E1;
+            } 
+        }
+        .player-menu-btn:nth-of-type(3) {
+            a.press{
+                    background-color: #FA99A6;
+            } 
+        }
+        .top {
+            margin-top: 0;
+        }
+    }        
+}
+
+
+
+
+
+
+

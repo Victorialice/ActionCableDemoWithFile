@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GlicoR5</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<meta name="csrf-param" content="authenticity_token" />
+		<meta name="csrf-token" content="HuWkytzIlqHdjkGri/amAk8yiaQSNO5A8YxaJfL2UDQbT+p/pgoFie8J/4s2wnnUSnuFmcTEFpjD6v7r3u4myA==" />
+
+		<script src="/scripts/jquery.js" ></script>
+		<script src="/scripts/action_cable.js" ></script>
+		<script src="/scripts/cable.self.js" ></script>
+		<script src="/scripts/jquery_ujs.js" ></script>
+	</head>
+
+	<body>
+		<style type="text/css">
+			div#qr, div#content{
+			margin: 0 auto;
+			text-align: center;
+			}
+
+			div#content{
+			margin-top: 30px;
+			}
+		</style>
+
+		<div id="content">
+			<h1>API Test</h1>
+			<div id="qr">
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<a target="_blank" href="/api/get_gid">/api/get_gid</a><br/><br/>
+			<a target="_blank" href="/test/api_test_photo_v2.html">/api/upload</a><br/><br/>
+			<img id="uploaded_img" src="" alt="Original" />
+			<p>group id: <span id="group_id"></span></p>
+			<p>user_id: <span id="user_id"></span></p>
+			<br/>
+
+			<p>/api/message</p>
+			<form action="/api/message" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="id1lIFIXITP2vWeXNcD0N8Lt7bC4EZ4DW6rV5h5H+Ytx23/jyqx5g3lVWe1Ofh+n1/azfazB+8h6h6hOpyAWhA==" />
+				<p>
+					<label for="gid">Gid</label>
+					<input type="text" name="gid" id="gid" />
+				</p>
+				<p>
+					<label for="message_id">Message</label>
+					<input type="text" name="message_id" id="message_id" />
+				</p>
+				<p>
+					<input type="submit" name="commit" value="Save changes" data-disable-with="Save changes" />
+			</form>         
+			<br/>
+
+			<div>
+				<a target="_blank" href="/test/api_test_user_upload_v2.html">user upload</a>
+			</div>
+
+			<h2>Socket API Test<h2>
+					<span id="drift_boat" data-group-id="" data-user-id=""></span>
+
+					<div>
+						<p>
+							user_upload_success
+							<span id="user_upload_success"></span>
+						</p>
+						<p>
+							<a id="user_network" href="#">user_network</a>
+							<span id="user_network"></span>
+						</p>
+						<p>
+							<a id="user_upload_close" href="#">user_upload_close</a>
+							<span id="user_upload_close_success"></span>
+						</p>
+						
+						<p>
+							user_turn_success
+							<span id="user_turn_success"></span>
+						</p>
+						
+						<p>
+							<a id="user_turn_reset" href="#">user_turn_reset</a>
+							<span id="user_turn_reset_success"></span>
+						</p>
+
+						<p>
+							<a id="loading_start" href="#">loading_start</a>
+							<span id="loading_start_success"></span>
+						</p>
+
+						<p>
+							<a id="user_download_success" href="#">user_download_success</a>
+							<span id="user_download_success"></span>
+						</p>
+
+						<p>
+							<a id="animation_start" href="#">animatin_start</a>
+							<span id="animation_start"></span>
+							<span id="animation_update"></span>
+						</p>
+						
+						<p>
+							<a id="share_ok" href="#">share_ok</a>
+							<span id="share_ok_success"></span>
+						</p>
+
+
+					</div>
+    </div>
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+  var group_id = window.location.search.split("/")[2];
+  var user_id = window.location.search.split("/")[3];
+  $("#uploaded_img").attr("src", window.location.search.substring(1));
+  $("span#group_id").text(group_id);
+  $("span#user_id").text(user_id);
+  $("form input#gid").val(group_id);
+  document.cookie="group_id="+group_id;
+  $("span#drift_boat").attr("data-group-id", group_id);
+  $("span#drift_boat").attr("data-user-id", user_id);
+  })
+</script>
+<script src="/js/ws_test_v2.js"></script>
+</body>
+</html>

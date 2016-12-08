@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <style>
+.row{margin:8px;}
+      </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Glico CP</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container" style="margin-top:60px;">
+      <h1>WS Test Page</h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <input type="text" class="form-control" id="user_id" placeholder="UserID">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+      <div class="row">
+        <h4>user2server</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-lg-2" style="text-align:right;">
+              App.drift.move("
+            </div>
+            <div class="form-group col-lg-2">
+              <!-- <label class="control&#45;label" for="usage1select2">通常の高さのセレクトボックス</label> -->
+              <select class="form-control" name="status">
+                <option>user_network</option>
+                <option>user_upload_close</option>
+                <option>user_turn</option>
+                <option>user_turn_reset</option>
+                <option>loading_start</option>
+                <option>user_download_success</option>
+                <option>share_ok</option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <input type="text" id="params" class="form-control" placeholder="パラメータをカンマ区切りで入力">
+              </div>
+            </div>
+
+            <div class="col-lg-1">
+              ") <button class="btn btn-primary" id="go_click" >Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:30px;">
+        <h4>server2user</h4>
+        <pre>
+
+        </pre>
+      </div>
+    </div>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+<script src="/scripts/action_cable.js" ></script>
+<script src="/scripts/cable.self.js" ></script>
+    <script>
+    
+var arg = new Object;
+var pair=location.search.substring(1).split('&');
+for(var i=0;pair[i];i++) {
+    var kv = pair[i].split('=');
+    arg[kv[0]]=kv[1];
+}
+var user_id = arg.user_id
+$("#user_id").val(user_id).change();
+$(function () {
+		App.drift = App.cable.subscriptions.create({
+				channel: "DriftChannel",
+				user_id:  user_id
+		}, {
+				connected: function() {
+         console.log("connected!");
+         $("pre").html("connected!");
+        },
+				disconnected: function() {
+         console.log("disconnected!");
+        },
+				received: function(data) {
+						// console.log(data["num"] === 1);
+						// alert(data["num"]);
+						console.log(data.data.status);
+						$("pre").html(JSON.stringify(data.data));
+				},
+
+				move: function(socket_name, args) {
+						return this.perform('move', {
+								socket_name: socket_name,
+								args: args
+						});
+				}
+		});
+$("#go_click").click(function(){
+  $("pre").html("");
+ var status = $('[name=status] option:selected').text();
+ var params = $('#params').val();
+ params = params.split(',');
+ App.drift.move(status,params);
+})
+})
+    
+function getCookie(name)
+{
+		var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg))
+				return unescape(arr[2]);
+		else
+				return null;
+}
+    </script>
+  </body>
+</html>

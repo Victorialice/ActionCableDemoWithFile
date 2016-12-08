@@ -1,0 +1,32 @@
+<style type="text/css">
+	div#qr, div#content{
+  width:800px;
+  margin: 0 auto;
+  text-align: center;
+	}
+
+	div#content{
+  margin-top: 30px;
+
+	}
+	#avatars li{
+	float: left;
+	width: 300px;
+	}
+</style>
+
+<p>Group ID: <%= @group_id %></p>
+
+<div id="content">
+
+	<%= form_for @user, url: '/home/upload' do |f| %>
+	<div class="form-group">
+		<%= f.label :avatar %>
+		<%= f.file_field :avatar, class: 'form-control' %>
+  </div>
+	
+	<%= f.hidden_field :group_id  %>
+
+  <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+  <% end %>
+</div>

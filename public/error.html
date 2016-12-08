@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/error.css"/>
+<title>Error</title>
+</head>
+<body>
+<div id="wrapper">
+  <div>
+    <img class="main" src="" />
+  </div>
+  <div class="btn-set btn-set-L">
+      <a href="topUrl" id="top-btn" class="ok-btn active-btn"></a>
+  </div>
+</div>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/preloadjs-0.6.2.min.js"></script>
+<script src="data/js/config.js"></script>
+<script src="data/js/common.js"></script>
+<script>
+var global_com = new Common();
+var query = global_com.getQueryString();
+if(query==null || query.code==undefined || query.code=="") location.href = "index.html";
+var imgSrc = "";
+if(query.code=="F00001" || query.code=="F00002") imgSrc = "error_1.png";
+if(query.code=="E00002") imgSrc = "error_2.png";
+if(query.code=="E00003" || query.code=="F00003" || query.code=="F00004" || query.code=="F00005" || query.code=="F00006") imgSrc = "error_3.png";
+var url = Config.basepath+"images/error/"+imgSrc;
+$(function(){
+  var wh = $(window).height();
+  var s = wh/603;
+  $(".main").on("load", function(e){
+      var w = Math.floor($(this).get(0).naturalWidth/2*s);
+      var h = Math.floor($(this).get(0).naturalHeight/2*s);
+      var top = Math.floor((wh - h) / 2);
+      $(this).width(w).css("marginTop", top+"px");
+  });
+  $(".main").attr("src", url);
+  $("#top-btn").attr("href", Config.topUrl)
+});
+</script>
+</body>
+</html>
+
+
+
+

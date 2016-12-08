@@ -1,0 +1,447 @@
+@import "compass/reset", "_common";
+body {
+    background-color: #FAE8EA;
+}
+a {
+    transition: 1.0s ;
+}
+
+.html5boxSeekerPlay, .html5boxVolumeBarActive{
+    background-color:#f0495f !important;
+}
+#wrapper
+{
+    .sp-menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: (946px / 2);
+        left: 0;
+        top: 0; 
+        background-repeat: no-repeat;
+        background-position: left top;            
+        background-image: url($hostname+$imagepath+'index/menu_bg.png');
+        background-size:100% auto;  
+        .menu-container{
+            position: relative;
+            height: 100%;
+            .close-btn {
+                position: absolute;
+                width: (76px / 2);
+                height: (70px / 2);
+                right: (20px / 2);
+                top: (20px / 2);
+                background-repeat: no-repeat;
+                background-position: left top;            
+                background-image: url($hostname+$imagepath+'index/menu_btn_close.png');
+                background-size:(76px / 2) (70px / 2);  
+            }
+            ul {
+                display: block;
+                position: absolute;
+                top: (66px / 2);
+                left: 0;
+                width: percentage(642px / 750px);
+                height: percentage((110px / 2) * 7 / 473px);
+                margin-left: percentage(54px / 750px);
+                li {
+                    width: 100%;
+                    height: percentage(1 / 7);
+                    display: block;
+                    overflow: hidden;
+                    .border {
+                        display: block;
+                        background-color: #F6CDD3;
+                        width: 100%;
+                        height: (6px / 2);
+                        border-radius: 1px;
+                        border-style:none;
+                    }
+                    a {
+//                        margin-top: 2px;
+                        text-indent: -9999px;
+                        display: block;
+                        width: 100%;
+    //                    height: (104px / 2);
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-position: (66px / 2) center;            
+                    }
+                }
+                li.index {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt00.png');                    
+                        background-size:(96px / 2) (36px / 2);  
+                    }
+                }
+                li.howto {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt01.png');                    
+                        background-size:(334px / 2) (36px / 2);  
+                    }
+                }
+                li.movie {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt02.png');                    
+                        background-size:(150px / 2) (36px / 2);  
+                    }           
+                }
+                li.campaign {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt03.png');                    
+                        background-size:(260px / 2) (36px / 2);  
+                    }
+                       
+                }
+                li.tvcm {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt04.png');                    
+                        background-size:(130px / 2) (36px / 2);  
+                    }
+                   
+                }
+                li.event {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt05.png');                    
+                        background-size:(260px / 2) (44px / 2);  
+//                        background-position: (66px / 2) (34px / 2);            
+                    }
+                }
+                li.official {
+                    a {
+                        background-image: url($hostname+$imagepath+'index/menu_txt06.png');                    
+                        background-size:(430px / 2) (44px / 2);  
+//                        background-position: (66px / 2) (34px / 2);            
+                    }                                   
+                }                
+            }
+
+        }
+    }
+    .main {
+        display: none;
+        width: 100%;
+/*        height: (1398px / 2);*/
+        .kv-container {
+            position: relative;
+            background-color: #38100D;
+            height: (1398px / 2);
+            .item {
+                display: none;
+                position: absolute;
+                left: 0;
+                top:0;                
+                background-repeat: no-repeat;
+                background-position: center center;            
+            }
+            .kv {
+                display: block;
+                top: (342px / 2);
+                width: 100%;
+                height: (1056px / 2);
+                background-image: url($hostname+$imagepath+'index/kv.jpg');
+                background-size:100% auto;  
+            }            
+            .cookie {
+                width: 100%;
+                height: (1236px / 2);
+                background-image: url($hostname+$imagepath+'index/cookie.png');
+                background-size:100% auto;                  
+            }
+            .title {
+                top:(104px / 2);
+                width: percentage(702px / 750px);
+                height: (298px / 2);
+                background-image: url($hostname+$imagepath+'index/title.png');
+                background-size:percentage(702px / 750px) auto;
+            }
+            .howto-title {
+                display: block;
+                top:(1204px / 2);
+                width: percentage(506px / 750px);
+                height: (106px / 2);
+                left: 0;
+                margin-left: percentage(((750 - 506) / 2) / 750);
+                background-image: url($hostname+$imagepath+'index/howto_title.png');
+                background-size:contain;
+//                background-position: left top;
+            }
+            .arrow {
+                top:(1060px / 2);
+                width: (40px / 2);
+                height: (56px / 2);
+                left: 50%;
+                margin-left: (-40px / 2 / 2);
+                li {
+                    display: block;
+                    width: (40px / 2);
+                    height: (24px / 2);
+                    background-repeat: no-repeat;
+                    background-position: center center;            
+                    background-image: url($hostname+$imagepath+'index/arrow.png');
+                    background-size:(40px / 2) (24px / 2);                                                      
+                    margin-top: (-8px / 2);
+                    opacity:(0.0);
+                }
+            }
+            .logo {
+                display: block;
+                top: (24px / 2);
+                left: (24px / 2);
+                width: (110px / 2);
+                height: (52px / 2);
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-image: url($hostname+$imagepath+'index/logo.png');
+                background-size:(110px / 2) (52px / 2);                                                      
+            }
+            .menu {
+                top: (20px / 2);
+                left: initial;
+                right: (20px / 2);
+                width: (76px / 2);
+                height: (70px / 2);
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-image: url($hostname+$imagepath+'index/menu_btn.png');
+                background-size:(76px / 2) (70px / 2);                                                      
+            }
+        }
+
+        .info {
+            position: relative;
+//            overflow-x: hidden;
+            .item {
+                display: block;
+                margin: 0 auto;
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:contain;                 
+            }
+            .howto-copy {
+                margin-top: (-12px / 2);
+                width: percentage(622px / 750px);
+                height: (122px / 2);
+                background-image: url($hostname+$imagepath+'index/howto_copy.png');
+//                background-size:contain;                 
+            }
+            .step1 {
+                margin-top: (52px / 2);
+                width: percentage(670px / 750px);
+                height: (324px / 2);
+                background-image: url($hostname+$imagepath+'index/step1.png');
+//                background-size:contain;                 
+            }
+            .step2 {
+                margin-top: (38px / 2);
+                width: percentage(670px / 750px);
+                height: (304px / 2);
+                background-image: url($hostname+$imagepath+'index/step2.png');
+//                background-size:contain;                 
+            }
+            .step3 {
+                margin-top: (28px / 2);
+                width: percentage(670px / 750px);
+                height: (324px / 2);
+                background-image: url($hostname+$imagepath+'index/step3.png');
+//                background-size:contain;                 
+            }
+        }
+        .type-select {
+            overflow: hidden;
+            .type-title {
+                display: block;
+                width: (678px / 2);
+                height: (250px / 2);
+                margin: 42px auto 0 auto;
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-image: url($hostname+$imagepath+'index/type_title.png');
+                background-size:(678px / 2) (250px / 2);                                                      
+            }
+            .btn-set{
+                width: 100%;
+                height: (110px / 2);
+                margin-top: (22px / 2);
+                padding-left: 4%;                
+                line-height: 0px;
+                a {
+                    float: left;
+                    height: 55px;
+                    display: block;
+                    text-align: center;
+                    border-radius: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: (82px / 2) (34px / 2);                    
+                }
+                .leader-btn {
+                    width: 44%;
+                    background-color: #E20825;
+                    background-image: url($hostname+$imagepath+'index/leader_btn_txt.png');
+                }
+                .leader-btn.press {
+                    background-color: #EF4359;                    
+                }
+                .member-btn {
+                    margin-left: 4%;
+                    width: 44%;
+                    background-color: #F0495F;
+                    background-image: url($hostname+$imagepath+'index/member_btn_txt.png');
+                }
+                .member-btn.press {
+                    background-color: #F3697B;                                        
+                }
+            }
+        }
+        .kol-container {
+            margin-top: (52px / 2);
+            position: relative;
+            width: 100%;
+            height: (696px / 2);
+            .kol {
+                position: absolute;
+                left: 0;
+                top:0;
+                width: 100%;
+                height: (696px / 2);
+                background-image: url($hostname+$imagepath+'index/kol.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:100% 100%;  
+                .btn {
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            }            
+        }
+        .campaign-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: (914px / 2);
+            background-image: url($hostname+$imagepath+'index/background_dot.jpg');
+            background-repeat: no-repeat;
+            background-position: left top;            
+            background-size:100% auto;  
+            padding-top: (60px / 2);
+            box-sizing: border-box;
+            .campaign {
+                width: percentage(678px / 750px);
+                height: (630px / 2);
+                margin: 0 auto;
+                background-image: url($hostname+$imagepath+'index/campaign.png');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:contain;
+            }
+            .btn-set {
+                margin-top: (44px / 2);
+                width: 100%;
+                height: (110px / 2);
+                padding-left: 4%;
+                line-height: 0px;            
+                a {
+                    background-color: #F0495F;
+                    background-image: url($hostname+$imagepath+'index/campaign_btn_txt.png');
+                    background-size: (226px / 2) (34px / 2);                    
+                    margin-left: 2.6666666667%;
+                    width: 86.6666666667%;
+                    height: 55px;
+                    display: block;
+                    text-align: center;
+                    border-radius: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+                a.press {
+                    background-color: #F3697B;
+                }
+            }
+        }
+        .wave {
+            width: 100%;
+            height: (100px / 2);
+            position: relative;
+            background-image: url($hostname+$imagepath+'index/dot_background_wave.jpg');
+            background-repeat: no-repeat;
+            background-position: left top;            
+            background-size:100% auto;  
+        }
+        .tvcm-container {
+            overflow: hidden;
+            position: relative;
+//            width: 100%;
+            height: (736px / 2);
+            background-image: url($hostname+$imagepath+'index/background_dot2.jpg');
+            background-repeat: no-repeat;
+            background-position: left top;            
+            background-size:100% auto;  
+            .title {
+                display: block;
+                height: (108px / 2);
+                width: percentage(218px / 750px);
+                margin: 0 auto;
+                background-image: url($hostname+$imagepath+'index/tvcm_title.png');
+                background-size:contain;
+                background-repeat: no-repeat;
+                background-position: center center;                                
+            }
+            .cm {
+                display: block;
+                width: percentage(660px / 750px);
+                height: (372px / 2);
+                margin: (40px / 2) auto 0 auto;                    
+                background-image: url($hostname+$imagepath+'index/tvcm.png');
+                background-size:contain;
+                background-repeat: no-repeat;
+                background-position: center center;                                
+            }
+            .btn-set {
+                margin-top: (30px / 2);
+                width: 100%;
+                height: (110px / 2);
+                padding-left: 4%;
+                line-height: 0px;            
+                a {
+                    background-color: #F0495F;
+                    background-image: url($hostname+$imagepath+'index/tvcm_btn_txt.png');
+                    background-size: (226px / 2) (34px / 2);                    
+                    margin-left: 2.6666666667%;
+                    width: 86.6666666667%;
+                    height: 55px;
+                    display: block;
+                    text-align: center;
+                    border-radius: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+                a.press {
+                    background-color: #F3697B;
+                }
+            }
+        }
+        .footer {
+            width: 100%;
+            height: (100px / 2);
+            box-sizing: border-box; 
+            background-color: #75564A;
+            padding-top: (26px / 2);
+            overflow: hidden;
+            p {
+                display: block;
+                margin: 0 auto;
+                text-indent: -99999px;
+                background-image: url($hostname+$imagepath+'index/footer_txt.png');
+                background-size: (638px / 2) (48px / 2);                    
+                width: (638px / 2);
+                height: (48px / 2);
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        }
+    }    
+}

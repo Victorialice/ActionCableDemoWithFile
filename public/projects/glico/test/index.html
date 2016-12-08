@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>test</title>
+
+		<link rel="stylesheet" href="css/style.css" media="all">
+
+	</head>
+	<body>
+
+		<div id="wrapper">
+			<canvas id="main" width="320" height="400"></canvas>
+		</div>
+
+		<input id="play-btn" type="button" value="再生" style="font-size:160%;position:fixed;z-index:110;width:200px;height:60px;display:none;top:50%;left:50%;margin:-30px 0 0 -100px;">
+
+		<div id="progress" style="text-align:center;font-size:160%;position:fixed;z-index:110;width:300px;height:100px;top:50%;left:50%;margin:-50px 0 0 -150px;">000％</div>
+
+		<div id="elapsed" style="text-align:right;font-size:130%;position:fixed;z-index:110;width:100px;height:50px;top:20px;right:20px;"></div>
+
+		<div id="nav" style="position:relative;z-index:100;">
+
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
+		<script src="js/purl.js"></script>
+		<script>
+			<!--
+
+					var animPath = "animation/test.png";
+
+					var getImagePath = "/get_image";
+
+					var fps = 10;
+					var width = 750;
+					var minFrame = 1;
+					var maxFrame = 233;
+
+					var soundPath = "sample.mp3";
+
+					var digits;
+
+					var ua;
+					var assets = {};
+					var loader;
+					var currentFrame;
+					var canvasObject;
+					var stage;
+					var bgm;
+
+					//var ratio = 0;
+
+					var basename;
+					var fpsLabel;
+					var frameLabel;
+					var param;
+
+					var offsetY = 0;
+
+					var start;
+					var timer;
+					$(function () {
+					start = new Date();
+					timer = setInterval(elapsedTime, 100);
+
+					ua = navigator.userAgent.toUpperCase();
+
+					param = $.url().param();
+					if (param.fps) {
+					fps = param.fps;
+					}
+
+					if (param.width) {
+					width = param.width;
+					}
+
+					if (param.path) {
+					animPath = param.path;
+					}
+
+					if (param.fmin) {
+					minFrame = parseInt(param.fmin);
+					}
+
+					if (param.fmax) {
+					maxFrame = parseInt(param.fmax);
+					}
+
+
+					//    digits = animPath.match(/\d/g).join("").length;
+
+
+					$(window).resize(function() {
+					$("#main").attr({height:$("#wrapper").height(), width:$("#wrapper").width()});
+					});
+					$(window).resize();
+
+					canvasObject = document.getElementById('main');
+					stage = new createjs.Stage(canvasObject);
+					stage.scaleX = 0.5;
+					stage.scaleY = 0.5;
+					stage.update();
+
+
+					fpsLabel = new createjs.Text("-- fps", "bold 26px Arial", "#FFF");
+					stage.addChild(fpsLabel);
+					fpsLabel.x = 10;
+					fpsLabel.y = 20;
+
+					frameLabel = new createjs.Text("-- frame", "bold 26px Arial", "#000");
+					stage.addChild(frameLabel);
+					frameLabel.x = 10;
+					frameLabel.y = 70;
+
+					loader = new createjs.LoadQueue(false);
+					loader.installPlugin(createjs.Sound);
+					loader.setMaxConnections(5);
+
+					var loadManifest = [];
+
+					var tmp = animPath.split(".");
+					basename = animPath.split('/').pop().split(".").shift();
+
+					var i;
+					for (i = minFrame;i < maxFrame + 1;i++) {
+					var num = ("0000" + i).slice(-4);
+					var _id = basename + "-" + num;
+					var _src = tmp[0] + num + "." + tmp[1];
+					_src = getImagePath + "?path=" + _src + "&width=" + width;
+					loadManifest.push({id: _id, src: _src});
+					}
+
+					loadManifest.push({id:"bgm", src: soundPath});
+
+					loader.loadManifest(loadManifest, false);
+					loader.addEventListener("progress", progressHandler);
+					loader.addEventListener("fileload", fileloadHandler);
+					loader.addEventListener("complete", completeHandler);
+					loader.load();
+					});
+
+					function progressHandler(event) {
+					var progress = Math.floor(event.progress * 100);
+					$("#progress").text(("00" + progress).slice(-3) + "％");
+					elapsedTime();
+					}
+
+					function fileloadHandler(event) {
+					assets[event.item.id] = new createjs.Bitmap(event.result);
+					}
+
+					function completeHandler(event) {
+					$("#progress").remove();
+
+					loader.removeEventListener("fileload", fileloadHandler);
+					loader.removeEventListener("complete", completeHandler);
+					console.log("complete");
+
+					bgm = createjs.Sound.createInstance("bgm");
+					bgm.setVolume(0.5);
+					bgm.addEventListener("complete", function(){
+					//alert("サウンド終了")
+					});
+
+					currentFrame = minFrame;
+					tick();
+
+					$("#play-btn").show().click(function(event){
+					play();
+					$(this).hide();
+					});
+
+					clearInterval(timer);
+					}
+
+					function elapsedTime(){
+					var now = new Date();
+					/*
+					datet = parseInt((now.getTime() - start.getTime()) / 1000);
+
+					hour = parseInt(datet / 3600);
+					min = parseInt((datet / 60) % 60);
+					sec = datet % 60;
+
+					if(hour < 10) hour = "0" + hour;
+					if(min < 10) min = "0" + min;
+					if(sec < 10) sec = "0" + sec;
+					*/
+					$("#elapsed").html("sec:" +  parseInt(now.getTime() - start.getTime()) / 1000);
+					}
+
+					function play() {
+					bgm.play();
+					createjs.Ticker.setFPS(fps);
+					createjs.Ticker.addEventListener('tick', tick);
+					//createjs.Tween.get(bitmap, {loop:true}).to({y:100}, 500, createjs.Ease.cubicInOut).to({y:200}, 500, createjs.Ease.cubicInOut);
+					}
+
+					function tick() {
+					var num = ("0000" + currentFrame).slice(-4);
+
+
+
+					var bitmap = assets[basename + "-" + num];
+					var ratio = (stage.canvas.width * 2) / bitmap.image.width;
+					bitmap.scaleX = ratio;
+					bitmap.scaleY = ratio;
+
+					bitmap.x = 0;
+					bitmap.y = (stage.canvas.height * 2) - (bitmap.image.height * ratio);
+
+					//bitmap.cache(0, 0, 160, 160);
+
+					stage.addChild(bitmap);
+
+					fpsLabel.text = Math.round(createjs.Ticker.getMeasuredFPS()) + " fps";
+					stage.setChildIndex(fpsLabel, (stage.getNumChildren()) - 1);
+
+					frameLabel.text = num + " frame";
+					stage.setChildIndex(frameLabel, (stage.getNumChildren()) - 1);
+
+					stage.update();
+					stage.removeChild(bitmap);
+
+					if (maxFrame <= currentFrame) {
+					$("#play-btn").show();
+					bgm.stop();
+					currentFrame = minFrame;
+					createjs.Ticker.removeEventListener('tick', tick);
+					tick();
+					}
+					currentFrame++;
+					}
+
+					/* メモリ計算
+					Galaxy s7???の解像度の場合
+
+					//1枚当たり 約 4MB
+					750 x 1336 x 32 / 8 = 4,008,000
+
+					//233枚分 約 932MB
+					4 * 233 = 932
+
+					//flashから書き出し時
+					・タイムラインのシンボルがムービークリップになっていたらグラフィックにする
+					・ファイル＞書き出し＞ムービーの書き出し＞ファイルの種類を「PNGシーケンス」にして保存＞範囲を「ムービーサイズ」にする
+
+
+
+					縦の下揃え
+					*/
+
+				-->
+		</script>
+	</body>
+</html>

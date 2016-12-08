@@ -1,0 +1,24 @@
+<style type="text/css">
+	div#qr, div#content{
+  width:800px;
+  margin: 0 auto;
+  text-align: center;
+	}
+
+	div#content{
+  margin-top: 30px;
+
+	}
+	#avatars li{
+	float: left;
+	width: 300px;
+	}
+</style>
+
+
+<div id="content">
+	このスマートフォンを一番左端にして、右側に他のスマートフォンを横一列に並べて下さい
+	<p>
+		<%= link_to "OK", "/tap/#{params[:group_id]}/users/#{@group.leader_id}" %>
+	</p>
+</div>

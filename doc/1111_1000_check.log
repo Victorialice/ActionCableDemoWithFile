@@ -1,0 +1,25 @@
+I, [2016-11-10T19:40:59.466351 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"user_network", "args"=>["yegqggic", 530, "2"]})
+I, [2016-11-10T19:41:05.476097 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"user_upload_close", "args"=>["yegqggic"]})
+I, [2016-11-10T19:41:05.478236 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_527: {:data=>{:status=>"user_upload_close_success"}}
+I, [2016-11-10T19:41:05.479459 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_528: {:data=>{:status=>"user_upload_close_success"}}
+I, [2016-11-10T19:41:05.480255 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_upload_close_success"}} (via streamed from drift_channel_527)
+I, [2016-11-10T19:41:05.481615 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_upload_close_success"}} (via streamed from drift_channel_528)
+I, [2016-11-10T19:41:05.481883 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_529: {:data=>{:status=>"user_upload_close_success"}}
+I, [2016-11-10T19:41:05.482869 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_530: {:data=>{:status=>"user_upload_close_success"}}
+I, [2016-11-10T19:41:05.484222 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_upload_close_success"}} (via streamed from drift_channel_529)
+I, [2016-11-10T19:41:05.485761 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_upload_close_success"}} (via streamed from drift_channel_530)
+I, [2016-11-10T19:41:26.092291 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"user_turn", "args"=>["yegqggic", 530]})
+I, [2016-11-10T19:41:26.096034 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_530: {:data=>{:status=>"user_turn_success", :message=>"success", :turn_id=>2}}
+I, [2016-11-10T19:41:26.097974 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_turn_success", "message"=>"success", "turn_id"=>2}} (via streamed from drift_channel_530)
+I, [2016-11-10T19:41:26.185521 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"user_turn", "args"=>["yegqggic", 528]})
+I, [2016-11-10T19:41:26.188636 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_528: {:data=>{:status=>"user_turn_success", :message=>"success", :turn_id=>3}}
+I, [2016-11-10T19:41:26.190806 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_turn_success", "message"=>"success", "turn_id"=>3}} (via streamed from drift_channel_528)
+I, [2016-11-10T19:41:27.904218 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"user_turn", "args"=>["yegqggic", 529]})
+I, [2016-11-10T19:41:27.906924 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_529: {:data=>{:status=>"user_turn_success", :message=>"success", :turn_id=>4}}
+I, [2016-11-10T19:41:27.908931 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_turn_success", "message"=>"success", "turn_id"=>4}} (via streamed from drift_channel_529)
+I, [2016-11-10T19:41:27.909885 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_527: {:data=>{:status=>"user_turn_success", :message=>"success", :turn_id=>4}}
+I, [2016-11-10T19:41:27.911492 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"user_turn_success", "message"=>"success", "turn_id"=>4}} (via streamed from drift_channel_527)
+I, [2016-11-10T19:41:32.965287 #22362]  INFO -- : DriftChannel#move({"socket_name"=>"loading_start", "args"=>["yegqggic", 56000, 1000, "0"]})
+I, [2016-11-10T19:41:32.968297 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_527: {:data=>{:status=>"loading_start_success", :network=>"0", :message_id=>"3", :users_id=>["527", "528", "530", "529"], :replay=>"0"}}
+I, [2016-11-10T19:41:32.969817 #22362]  INFO -- : [ActionCable] Broadcasting to drift_channel_528: {:data=>{:status=>"loading_start_success", :network=>"0", :message_id=>"3", :users_id=>["527", "528", "530", "529"], :replay=>"0"}}
+I, [2016-11-10T19:41:32.971365 #22362]  INFO -- : DriftChannel transmitting {"data"=>{"status"=>"loading_start_success", "network"=>"0", "message_id"=>"3", "users_id"=>["527", "528", "530", "529"], "replay"=>"0"}} (via streamed from drift_channel_527)

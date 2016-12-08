@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="../data/css/pc.css"/>
+<title>PC</title>
+</head>
+<body>
+<div id="wrapper">
+    <div class="main">
+      <div class="kv-container">
+        <div class="item kv"></div>
+        <span class="item cookie"></span>
+        <span class="item title"></span>
+        <ul class="item arrow">
+          <li class="top"></li>
+          <li class="mid"></li>
+          <li class="bottom"></li>
+        </ul>
+      </div>
+      <div class="info">
+        <span class="step"></span>
+        <span class="qr"></span>
+      </div>
+      <div class="kol-container">
+        <div class="kol">
+          <a href="../data/mp4/tvcm.mp4" class="btn html5lightbox" data-width="1280" data-height="720" data-bgcolor="#fff" data-titlecss="" data-overlaybgcolor="#f0495f" data-overlayopacity="0.9"></a>
+        </div>
+      </div>
+      <div class="campaign-container">
+        <div class="campaign"></div>
+        <span class="text"></span>
+        <a href="#" class="btn"></a>
+      </div>
+      <div class="tvcm-container">
+        <div class="tvcm"></div>
+        <a href="../data/mp4/tvcm.mp4" class="cm html5lightbox" data-width="1280" data-height="720" data-bgcolor="#fff" data-titlecss="" data-overlaybgcolor="#f0495f" data-overlayopacity="0.9"></a>
+        <a href="#" class="btn"></a>
+      </div>
+      <div class="footer">
+        <p>上海江崎格力高食品有限公司 版权所有 沪ICP备05016808号</p>
+        <p>SHANGHAI EZAKI GLICO FOODS CO.,LTD. Copyright © 2017 All rights reserved.</p>
+      </div>
+    </div>
+    <div id="loading">
+        <div class="loading-item"></div>
+    </div>
+</div>
+<script src="../data/js/jquery-2.1.1.min.js"></script>
+<script src="../data/js/jquery.easing.1.3.js"></script>
+<script src="../data/js/jquery.class.min.js"></script>
+<script src="../data/js/html5lightbox.js"></script>
+<script src="../data/js/preloadjs-0.6.2.min.js"></script>
+<script src="../data/js/config.js"></script>
+<script>
+</script>
+
+<script src="../data/js/common.js"></script>
+<script>
+var Arrow = Class.get({
+    interval:2000
+    ,target:null
+    ,initialize:function(target){
+      this.target = target;
+    }
+    ,start:function(){
+      var t = this;
+      setInterval(function(){
+        $(t.target).animate(
+            {opacity:1.0},500,null,function(){}
+          ).animate(
+            {opacity:0.0},250,null,function(){}
+          );
+      }, this.interval)
+    } 
+});
+var global_com = new Common();
+(function(){
+  var query = global_com.getQueryString();
+  if(Config.lock && (query==null || query.pass==undefined || query.pass!=Config.password)) { location.href = "http://baidu.com/"; return; }
+  if(navigator.userAgent.match(/AppleWebKit.*Mobile.*/) || (navigator.userAgent.indexOf('Windows Phone') != -1)
+  || (navigator.userAgent.toLowerCase().indexOf('android') != -1) || (navigator.userAgent.toLowerCase().indexOf('linux') != -1))
+  {
+    window.location.href = Config.topUrl;
+  }  
+})();
+var loading = new Loading(global_com);
+var loadImages = ["arrow.png","campaign.jpg","campaign.png","campaign_btn_txt.jpg","campaign_btn_txt.png","cm.png","cookie.png","kol.jpg","kv.jpg","kv100.jpg","qr.jpg","step.jpg","title.png","tvcm.jpg","tvcm_btn_txt.jpg","tvcm_btn_txt.png"];
+$.each(loadImages, function(i, val){
+  loadImages[i] = "pc/" + val;
+});
+loading.on("loading_complete", function(e){
+    console.log("loading_complete");
+    loading.off(e);
+    $("#loading").remove();
+    $(".main").fadeIn(500);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .cookie").fadeIn(500);
+    }, 250);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .title").fadeIn(500);
+    }, 500);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .arrow").fadeIn(500);
+    }, 750);
+
+    var a1 = new Arrow("#wrapper .main .kv-container .arrow li.top");
+    var a2 = new Arrow("#wrapper .main .kv-container .arrow li.mid");
+    var a3 = new Arrow("#wrapper .main .kv-container .arrow li.bottom");
+    setTimeout(function(){ a1.start(); }, 300);
+    setTimeout(function(){ a2.start(); }, 600);
+    setTimeout(function(){ a3.start(); }, 900);
+});
+loading.start(loadImages);
+$(function () {
+    $(window).on("resize orientationchange", function() {
+        var w = $("#wrapper").width();
+        var h = Math.floor(1206/750*w);
+        var wh = $(window).height();
+        $("#loading").css("height", wh+"px");
+    });
+    $(window).resize();
+});
+</script>
+</body>
+</html>
+
+
+
+

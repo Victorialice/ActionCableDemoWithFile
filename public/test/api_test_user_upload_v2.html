@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>photo</title>
+<link rel="stylesheet" href="/test/css/style.css" media="all">
+<style type="text/css">
+#image-box {
+  height: 150px;
+}
+#hit {
+}
+#form-box {
+  position:fixed;
+  bottom: 0;
+}
+form {
+  width: 100%;
+  text-align: center;
+}
+.common-btn {
+  height: 40px;
+  width: 100%;;
+  display: block;
+}
+.disable{
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<span id="drift_boat" data-users-count="1" data-group-id="gsqzpi34" data-user-id="1"></span>
+<div id="wrapper">
+  <div id="image-box" style="position:relative;">
+    <img id="src_keeper" style="position:absolute;"></img>
+    <div id="hit" class="disable" style="position:absolute; background: #42d692; width: 150px; height: 150px; opacity: .5;"></div>
+  </div>
+  <div id="form-box" style="">
+    <div id="img" style="display: block;"></div>
+    <form>
+      <label for="file" style="">
+        <img id="btn-image" src="/test/images/1a4b40b0.png" height="50" border="0"></img>
+        <input id="file" type="file" accept="image/jpeg, image/gif, image/png, capture=camera" style="display:none;">
+      </label>
+      <input id="cut-btn" class="common-btn" type="button" value="切り取り"></input>
+      <input id="upload_button" class="btn" type="button" value="アップロード"></input>
+    </form>
+  </div>
+</div>
+<script src="/test/js/jquery-1.11.1.min.js"></script>
+<script src="/test/js/createjs-2014.12.12.min.js"></script>
+<script src="/test/js/megapix-image.js"></script>
+<script src="/test/js/exif.js"></script>
+<script src="/test/js/hammer.min.js"></script>
+<script src="/test/js/touchphoto.js"></script>
+<script type="text/javascript">
+function getCookie(name)
+{
+  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+  if(arr=document.cookie.match(reg))
+    return unescape(arr[2]);
+  else
+    return null;
+}
+var CGI_PATH = "/api/uploads";
+var IMAGES = null;
+var originalImage = null;
+
+var src_keeper = document.getElementById('src_keeper');
+
+$('#file').on('change', function(e) {
+    var file = this.files[0];
+
+    ResizeImage.resizeImage(file, 0, src_keeper).then(function(resize_image, no) {
+      var canvasData = resize_image.replace(/^data:image\/jpeg;base64,/, '');
+      originalImage = resize_image;
+      IMAGES = canvasData;
+      });
+    });
+$("#cut-btn").click(function(e){
+    e.preventDefault();
+    var _w = $("#src_keeper").width();
+    var _h = $("#src_keeper").height();
+    var pos = TouchPhoto.calculatePosition(_w, _h);
+    var size = $("#hit").width()*1/TouchPhoto.transform.scale;
+    var canvas = document.createElement("canvas");
+    var displayImage = new Image();
+    adaptedImage = ResizeImage.adaptImage(originalImage, size, -pos.x, -pos.y, canvas);
+    displayImage.src = adaptedImage;
+    IMAGES = adaptedImage.replace(/^data:image\/jpeg;base64,/, '');
+    $("#img").empty();
+    $("#img").append(displayImage);
+    });
+
+$('#upload_button').on('click', function() {
+    var fd = new FormData();
+    fd.append('file', IMAGES);
+    fd.append('gid', getCookie("group_id"));
+    fd.append('user', "2");
+    $.ajax({
+url: CGI_PATH,
+type: 'POST',
+data: fd,
+processData: false,
+contentType: false,
+dataType: 'json'
+})
+    .done(function(data) {
+      console.log(data.status);
+console.log("/uploads/"+data["gid"]+"/"+data["uid"]+"/original.jpg");
+window.location = "/test/api_test_user_v2.html?" + "/uploads/"+data["gid"]+"/"+data["uid"]+"/original.jpg";
+
+      <!-- leader_id = $("#drift_boat").data("user-id"); -->
+      <!-- user_id = data.data["uid"]; -->
+      <!-- App.sample.user_upload_success(leader_id, user_id); -->
+      <!-- $("#response").append("<img src='" + "/uploads/"+data.data["gid"]+"/"+data.data["uid"]+"/original.jpg'"); -->
+      });
+});
+TouchPhoto.init(src_keeper);
+</script>
+<div id="response" style="float:right;margin-right:300px;"></div>
+</body>
+</html>

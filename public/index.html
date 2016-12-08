@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/index.css"/>
+<title>Index</title>
+</head>
+<body>
+<div id="wrapper">
+    <div class="main">
+      <div class="kv-container">
+        <div class="item kv"></div>
+        <span class="item cookie"></span>
+        <span class="item title"></span>
+        <ul class="item arrow">
+          <li class="top"></li>
+          <li class="mid"></li>
+          <li class="bottom"></li>
+        </ul>
+        <span class="item howto-title"></span>
+        <span class="item logo"></span>
+        <a href="#" class="item menu"></a>        
+      </div>
+      <div class="info" id="howto">
+        <span class="item howto-copy"></span>
+        <span class="item step1"></span>
+        <span class="item step2"></span>
+        <span class="item step3"></span>
+      </div>
+      <div class="type-select">
+        <span class="type-title"></span>
+          <div class="btn-set">
+              <a href="howto.html?type=1" class="leader-btn active-btn"></a>
+              <a href="howto.html?type=2" class="member-btn active-btn"></a>
+          </div>
+      </div>
+      <div class="kol-container" id="movie">
+        <div class="kol">
+          <a href="data/mp4/tvcm.mp4" target="_blank" class="btn" data-width="1280" data-height="720" data-bgcolor="#fff" data-titlecss=""></a>
+        </div>
+      </div>
+      <div class="campaign-container" id="campaign">
+        <div class="campaign"></div>
+        <div class="btn-set">
+            <a href="#" class="btn active-btn"></a>
+        </div>
+      </div>
+      <div class="wave"></div>
+      <div class="tvcm-container" id="tvcm">
+        <p class="title"></p>
+        <a href="data/mp4/tvcm.mp4" target="_blank" class="cm" data-width="1280" data-height="720" data-bgcolor="#fff" data-titlecss=""></a>
+        <div class="btn-set">
+            <a href="#" class="btn active-btn"></a>
+        </div>
+      </div>
+      <div class="footer">
+        <p>上海江崎格力高食品有限公司 版权所有 沪ICP备05016808号 SHANGHAI EZAKI GLICO FOODS CO.,LTD. Copyright © 2017 All rights reserved.</p>
+      </div>
+    </div>
+    <div id="loading">
+        <div class="loading-item"></div>
+    </div>
+    <div class="sp-menu">
+      <div class="menu-container">
+        <ul>
+          <li class="top index"><a class="slide" href="#top">TOP</a></li>
+          <li class="mid howto"><span class="border"></span><a class="slide" data-offset="-110" href="#howto">HOW TO PLAY</a></li>
+          <li class="mid movie"><span class="border"></span><a class="slide" data-offset="0" href="#movie">MOVIE</a></li>
+          <li class="mid campaign"><span class="border"></span><a class="slide" data-offset="0" href="#campaign">CAMPAIGN</a></li>
+          <li class="mid tvcm"><span class="border"></span><a class="slide" data-offset="0" href="#tvcm">TVCM</a></li>
+          <li class="mid event"><span class="border"></span><a href="#">活动规则</a></li>
+          <li class="end official"><span class="border"></span><a href="#">格力高巧茶点官网</a></li>
+        </ul>
+        <a href="#" class="close-btn"></a>
+      </div>
+    </div>
+</div>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.easing.1.3.js"></script>
+<script src="data/js/jquery.scrollTo.min.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/preloadjs-0.6.2.min.js"></script>
+<script src="data/js/config.js"></script>
+<script src="data/js/common.js"></script>
+<script src="data/js/jweixin-1.0.0.js"></script>
+<script src="data/js/wechat.js"></script>
+<script>
+var Arrow = Class.get({
+    interval:2000
+    ,target:null
+    ,initialize:function(target){
+      this.target = target;
+    }
+    ,start:function(){
+      var t = this;
+      setInterval(function(){
+        $(t.target).animate(
+            {opacity:1.0},500,null,function(){}
+          ).animate(
+            {opacity:0.0},250,null,function(){}
+          );
+      }, this.interval)
+    } 
+});
+var global_com = new Common();
+(function(){
+  var query = global_com.getQueryString();
+  if(Config.lock && (query==null || query.pass==undefined || query.pass!=Config.password)) { location.href = "http://baidu.com/"; return; }
+  if(!(navigator.userAgent.match(/AppleWebKit.*Mobile.*/) || (navigator.userAgent.indexOf('Windows Phone') != -1)
+  || (navigator.userAgent.toLowerCase().indexOf('android') != -1) || (navigator.userAgent.toLowerCase().indexOf('linux') != -1)))
+  {
+    window.location.href = Config.pcUrl;
+  }
+})();
+var loading = new Loading(global_com);
+var loadImages = ["arrow.png","background_dot.jpg","background_dot2.jpg","campaign.png","campaign_btn_txt.png","cookie.png","dot_background_wave.jpg","footer_txt.png","howto_copy.png","howto_title.png","kol.jpg","kv.jpg","leader_btn_txt.png","logo.png","member_btn_txt.png","menu_btn.png","menu_btn_close.png","menu_txt00.png","menu_txt01.png","menu_txt02.png","menu_txt03.png","menu_txt04.png","menu_txt05.png","menu_txt06.png","step1.png","step2.png","step3.png","title.png","tvcm.png","tvcm_btn_txt.png","tvcm_title.png","type_title.png"];
+$.each(loadImages, function(i, val){
+  loadImages[i] = "index/" + val;
+});
+loading.on("loading_complete", function(e){
+    console.log("loading_complete");
+    loading.off(e);
+    $("#loading").remove();
+    $(".main").fadeIn(500);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .cookie").fadeIn(500);
+    }, 250);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .title").fadeIn(500);
+    }, 500);
+    setTimeout(function(){
+      $("#wrapper .main .kv-container .arrow, #wrapper .main .kv-container .menu").fadeIn(500);
+    }, 750);
+
+    var a1 = new Arrow("#wrapper .main .kv-container .arrow li.top");
+    var a2 = new Arrow("#wrapper .main .kv-container .arrow li.mid");
+    var a3 = new Arrow("#wrapper .main .kv-container .arrow li.bottom");
+    setTimeout(function(){ a1.start(); }, 300);
+    setTimeout(function(){ a2.start(); }, 600);
+    setTimeout(function(){ a3.start(); }, 900);
+});
+loading.start(loadImages);
+$(function () {
+    $(window).on("resize orientationchange", function() {
+        var w = $("#wrapper").width();
+        var h = Math.floor(1206/750*w);
+        var ww = $(window).width();
+        var wh = $(window).height();
+        var s =  ww / 375;
+        $("#loading").css("height", wh+"px");
+        $("#wrapper .main .kv-container").height(Math.floor(699*s)-1);
+        $("#wrapper .main .kv-container .kv").height(Math.floor(528*s)).css("top", Math.floor(171*s)+"px");
+        $("#wrapper .main .kv-container .cookie").height(Math.floor(618*s));
+        $("#wrapper .main .kv-container .title").height(Math.floor(149*s)).css("top", Math.floor(52*s)+"px");
+        $("#wrapper .main .kv-container .howto-title").css("top", Math.floor(602*s)+"px");
+        $("#wrapper .main .kv-container .arrow").css("top", Math.floor(530*s)+"px");
+        $("#wrapper .main .kv-container .howto-title").css("height", Math.floor(53*s)+"px");
+        $("#wrapper .main .tvcm-container .title").css("height", Math.floor(54*s)+"px");
+        $("#wrapper .main .tvcm-container .cm").css({"height": Math.floor(186*s)+"px","margin-top":Math.floor(20*s)+"px"});
+        $("#wrapper .main .kol-container, #wrapper .main .kol-container .kol").height(Math.floor(348*s));
+        $("#wrapper .main .tvcm-container .tvcm").height(Math.floor(259*s));
+        $("#wrapper .main .tvcm-container .tvcm .cm").height(Math.floor(186*s));
+        $("#wrapper .main .campaign-container").css({"height": Math.floor(457*s)+"px","padding-top":Math.floor(30*s)+"px"});
+        $("#wrapper .main .campaign-container .campaign").css("height", Math.floor(315*s)+"px");
+        $("#wrapper .main .wave").css("height",Math.floor(50*s)+"px");
+        $("#wrapper .main .tvcm-container").css("height", Math.floor(368*s)+"px");
+        $("#wrapper .sp-menu").css("height", Math.floor(473*s)+"px");
+        $("#wrapper .main .info .howto-copy").css({"height": Math.floor(61*s)+"px","margin-top":Math.floor(-6*s)+"px"});
+        $("#wrapper .main .info .step1").css({"height": Math.floor(162*s)+"px","margin-top":Math.floor(26*s)+"px"});
+        $("#wrapper .main .info .step2").css({"height": Math.floor(152*s)+"px","margin-top":Math.floor(19*s)+"px"});
+        $("#wrapper .main .info .step3").css({"height": Math.floor(162*s)+"px","margin-top":Math.floor(14*s)+"px"});
+        $("#wrapper .main .campaign-container .btn-set").css("margin-top", Math.floor(22*s)+"px");
+        $("#wrapper .main .tvcm-container .btn-set").css("margin-top", Math.floor(15*s)+"px");
+
+    });
+    $(window).resize();
+    $("#wrapper .sp-menu .menu-container .close-btn").on("click", function(e){
+      e.preventDefault();
+      $(this).addClass("disabled");
+      $("#wrapper .sp-menu").slideUp(250, "easeOutCubic", function(){})
+    });
+    $("#wrapper .main .kv-container .menu").on("click", function(e){
+      e.preventDefault();
+      $("#wrapper .sp-menu").slideDown(250, "easeOutCubic", function(){
+        $("#wrapper .sp-menu .menu-container .close-btn").removeClass("disabled");
+      })      
+    });
+    $("#wrapper .sp-menu .menu-container ul li a.slide").on("click", function(e){
+      e.preventDefault();
+      $("#wrapper .sp-menu .menu-container .close-btn").addClass("disabled");
+      $("#wrapper .sp-menu").hide();
+      var ww = $(window).width();
+      var offset = Math.floor(parseInt($(this).attr("data-offset")) * (ww / 375));
+      var id = $(this).attr("href").substr(1, $(this).attr("href").length-1);
+      $(window).scrollTo("#"+id, 500, {easing:"easeOutCubic", offset:offset});
+    });
+    $(".active-btn").on("touchstart", function(e){
+        e.stopPropagation();
+        $(this).addClass("press");
+    });
+    $(".active-btn").on("touchend touchcancel", function(e){
+        e.stopPropagation();
+        $(this).removeClass("press");
+    });
+
+});
+</script>
+</body>
+</html>
+
+
+
+

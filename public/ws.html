@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GlicoR5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <meta name="csrf-param" content="authenticity_token" />
+		<meta name="csrf-token" content="HuWkytzIlqHdjkGri/amAk8yiaQSNO5A8YxaJfL2UDQbT+p/pgoFie8J/4s2wnnUSnuFmcTEFpjD6v7r3u4myA==" />
+
+    <script src="/scripts/jquery.js" ></script>
+		<script src="/scripts/action_cable.js" ></script>
+		<script src="/scripts/cable.self.js" ></script>
+		<script src="/scripts/jquery_ujs.js" ></script>
+  </head>
+
+  <body>
+    <style type="text/css">
+			div#qr, div#content{
+			text-align: center;
+			}
+
+			div#content{
+			margin-top: 30px;
+			}
+			ul#drift_avatars li{
+			width:300px;
+			float: left
+			}
+		</style>
+
+
+		<div id="content">
+			<span id="drift_boat" data-users-count="1" data-group-id="638841" data-user-id="135"></span>
+
+			<p style="font-size:36px">
+				<span>
+					1
+				</span>
+			</p>
+			<p style="clear:both"></p>
+			<div id="elapsed" style="text-align:right;font-size:130%;position:fixed;z-index:110;width:100px;height:50px;top:20px;right:20px;"></div>
+			<p style="font-size:32px">
+				<span><a id="magic_start" href="javascript:void(0)">START</a></span>
+			</p>
+		</div>
+		<script src="/js/ws_sample.js"></script>
+  </body>
+</html>

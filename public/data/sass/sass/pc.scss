@@ -1,0 +1,240 @@
+@import "compass/reset", "_common";
+body {
+    background-color: #FFF1F3;
+}
+a {
+    transition: 1.0s ;
+}
+
+.html5boxSeekerPlay, .html5boxVolumeBarActive{
+    background-color:#f0495f !important;
+}
+#wrapper
+{
+    .main {
+        display: none;
+        width: 100%;
+        .kv-container {
+            position: relative;
+            height: 1040px;
+            .item {
+                position: absolute;
+                left: 50%;
+                top:0;                
+                background-repeat: no-repeat;
+                background-position: center center;            
+            }
+            .kv {
+                width: 1920px;
+                height: 1040px;
+                margin-left: -960px;
+                background-image: url($hostname+$imagepath+'pc/kv.jpg');
+                background-size:1920px 1040px;  
+            }            
+            .cookie {
+                display: none;
+                width: 1512px;
+                height: 846px;
+                margin-left: -756px;
+                background-image: url($hostname+$imagepath+'pc/cookie.png');
+                background-size:1512px 846px;                  
+            }
+            .title {
+                display: none;
+                left: 50%;
+                top:173px;
+                width: 502px;
+                height: 248px;
+                margin-left: -546px;
+                background-image: url($hostname+$imagepath+'pc/title.png');
+                background-size:502px 248px;                                  
+            }
+            .arrow {
+                display: none;
+                top:627px;
+                width: 32px;
+                height: 44px;
+                margin-left: -16px;
+                li {
+                    display: block;
+                    width: 32px;
+                    height: 18px;
+                    background-repeat: no-repeat;
+                    background-position: center center;            
+                    background-image: url($hostname+$imagepath+'pc/arrow.png');
+                    background-size:32px 18px;                                                      
+                    margin-top: -4px;
+                    opacity:(0.0);
+                }
+            }
+        }
+        .info {
+            position: relative;
+            height: (435px + 307px);
+            .step {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: 1044px;
+                height: 435px;
+                margin-left: -522px;
+                background-image: url($hostname+$imagepath+'pc/step.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1044px 435px;                  
+            }
+            .qr {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top:435px;
+                width: 1044px;
+                height: 307px;
+                margin-left: -522px;
+                background-image: url($hostname+$imagepath+'pc/qr.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1044px 307px;                                  
+            }
+        }
+        .kol-container {
+            position: relative;
+            height: 618px;
+            .kol {
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: 1920px;
+                height: 618px;
+                margin-left: -960px;
+                background-image: url($hostname+$imagepath+'pc/kol.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1920px 618px;  
+                .btn {
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    top:0;
+                    width: 1044px;
+                    height: 612px;
+                    margin-left: -522px;
+                }
+
+            }            
+        }
+        .campaign-container {
+            position: relative;
+            height: 700px;
+            .campaign {
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: 1920px;
+                height: 700px;
+                margin-left: -960px;
+                background-image: url($hostname+$imagepath+'pc/campaign.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1920px 700px;  
+            }
+            .text {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: 1044px;
+                height: 538px;
+                margin-left: -522px;
+                background-image: url($hostname+$imagepath+'pc/campaign.png');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1044px 538px;                     
+            }
+            .btn {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 538px;
+                float: left;
+                width: 520px;
+                height: 94px;
+                margin-left: -260px;
+                text-align: center;
+                border-radius: 20px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-color: #F0495F;
+                background-image: url($hostname+$imagepath+'pc/campaign_btn_txt.png');
+                background-size: 176px 26px;
+            }
+            .btn:hover {
+                background-color: #F3697B;                
+            }
+        }
+        .tvcm-container {
+            position: relative;
+            height: 900px;
+            .tvcm {
+                position: absolute;
+                left: 50%;
+                top:0;
+                width: 1920px;
+                height: 900px;
+                margin-left: -960px;
+                background-image: url($hostname+$imagepath+'pc/tvcm.jpg');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:1920px 900px;                  
+            }
+            .cm {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top:200px;
+                width: 818px;
+                height: 470px;
+                margin-left: -409px;
+                background-image: url($hostname+$imagepath+'pc/cm.png');
+                background-repeat: no-repeat;
+                background-position: center center;            
+                background-size:818px 470px;                     
+            }
+            .btn {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 724px;
+                float: left;
+                width: 520px;
+                height: 94px;
+                margin-left: -260px;
+                text-align: center;
+                border-radius: 20px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-color: #F0495F;
+                background-image: url($hostname+$imagepath+'pc/tvcm_btn_txt.png');
+                background-size: 176px 26px;
+            }
+            .btn:hover {
+                background-color: #F3697B;                
+            }
+        }
+        .footer {
+            width: 100%;
+            height: 78px;
+            background-color: #75564A;
+            text-align: center;
+            padding-top: 22px;
+            p {
+                font-family: sans-serif;
+                color: #ffffff;
+                line-height: 28px;
+                font-size: 15px;
+                letter-spacing: 1.2px;
+            }
+        }
+    }    
+}

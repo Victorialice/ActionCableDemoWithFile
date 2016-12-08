@@ -1,0 +1,35 @@
+<p>group id: <%= params[:group_id] %></p>
+<p>user_id: <%= params[:user_id] %></p>
+<br/>
+
+
+<h2>Socket API Test<h2>
+		<span id="drift_boat" data-users-count="1" data-group-id="<%= params[:group_id] %>" data-user-id="<%= params[:user_id] %>"></span>
+
+		<div>
+			<p>
+				<%= link_to "user_network", "#", id: "user_network" %>
+				<span id="user_network"></span>
+			</p>
+			<!-- <p> -->
+			<!-- 	<%= link_to "user_upload_close", "#", id: "user_upload_close" %> -->
+			<!-- 	<span id="user_upload_close_success"></span> -->
+			<!-- </p> -->
+			<p>
+				<%= link_to "user_turn", "#", id: "user_turn" %>
+				<span id="user_turn_success"></span>
+			</p>
+			
+			<p>
+				<%= link_to "loading_start", "#", id: "loading_start" %>
+				<span id="loading_start_success"></span>
+			</p>
+			
+			<p>
+				<%= link_to "user_download_success", "#", id: "user_download_success" %>
+				<span id="user_download_success"></span>
+			</p>
+
+
+		</div>
+</div>

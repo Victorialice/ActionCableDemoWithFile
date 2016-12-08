@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<link rel="stylesheet" href="data/css/member.css"/>
+<title>Member</title>
+</head>
+<body>
+<div id="wrapper" class="member">
+    <div id="entry">
+        <!--写真選択〜編集  -->    
+        <div id="page1" class="page">
+            <div class="title title1-2">
+                <h2>对准轮廓调整自己的照片</h2>
+            </div>
+            <div id="image-box">
+                <img id="src_keeper" style="position:absolute;"></img>
+                <div id="face-frame" class="disable" style="position:absolute;"></div>
+                <div id="hit" class="hit-area disable"></div>   
+                <div id="hit-border" class="hit-area disable"></div>
+                <div id="pinch" class="controll hit-area disable"></div> 
+                <div id="cross-arrow" class="controll hit-area disable"></div>
+            </div>
+            <div class="btn-set">
+                <a href="#" class="back-btn active-btn"></a>
+                <a href="#" id="cut-btn" class="ok-btn active-btn"></a>
+            </div>
+            <div class="content">
+                <div class="title title1-1">
+                    <h2>请上传自己的大头贴</h2>
+                </div>
+                <div class="cut"></div>
+                <div id="form-box" style="">
+                    <form>
+                        <label for="file" style="">
+                            <p class="file-btn active-btn"></p>
+                            <input id="file" type="file" accept="image/jpeg, image/gif, image/png, capture=camera" style="opacity: 0;">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--写真確認  -->    
+        <div id="page2" class="page">
+            <div class="title">
+                <h2>OK吗?</h2>
+            </div>
+            <div id="img" style="display: block;">
+                <img src="/data/images/test/face.jpg"></img>
+                <div class="border"></div>
+            </div>
+            <div class="wave"></div>
+            <div class="btn-set">
+                <a href="#" class="back-btn active-btn"></a>
+                <a href="#" id="next-btn" class="ok-btn active-btn"></a>
+            </div>
+            <span class="cookie cookie-l"></span>
+            <span class="cookie cookie-r"></span>
+        </div>
+        <!--エントリー完了-->    
+        <div id="page3" class="page">
+            <div class="title-box clearfix">
+                <div class="title">
+                    <h2>完成提交</h2>
+                </div>
+                <p class="text1"></p>
+            </div>
+            <div class="background-top"></div>
+            <div class="box clearfix">
+                <div class="item baloon">
+                    <p class="baloon-item"></p>
+                </div>
+                <div class="item animation clearfix">
+                    <canvas width="248" height="118" id="ready-animation"></canvas>
+                </div>
+            </div>
+        </div>
+        <!--順番-->    
+        <div id="page4" class="page">
+            <div class="select-box clearfix">
+                <div class="title">
+                    <h2>请从最左面按顺序点击屏幕</h2>
+                </div>
+                <div class="item animation">
+                    <canvas width="309" height="187" id="tap-animation"></canvas>
+                </div>
+                <p class="caution">※点击屏幕的时候请注意不要移动手机的位置。</p>
+                <div class="btn-set btn-set-L">
+                    <a href="#" id="tap_button" class="ok-btn active-btn"></a>
+                </div>
+            </div>
+            <div class="number-box">
+                <p class="number"></p>
+            </div>
+        </div>
+    </div>
+    <div id="player">
+        <canvas id="main" width="750" height="1206"></canvas>
+        <div class="loading-box">
+            <div class="loading-container">
+                <canvas id="loading-anim" class="loading-anim" width="375" height="603"></canvas>
+                <ul>
+                    <li class="progress0"><span class="loaindg-num00" /></li>
+                    <li class="progress1"><span class="loaindg-num00" /></li>
+                    <li class="progress2"><span class="loaindg-num00" /></li>
+                    <li class="progress3"><span class="loaindg-percent" /></li>
+                </ul>
+            </div>
+        </div>
+        <div class="float"></div>
+    </div>
+    <div id="step">
+        <ul>
+            <li name="step1" class="on"><span class="step1" label="照片上传"></span></li>
+            <li name="step2"  class="off"><span class="step2" label="选择Message"></span></li>
+            <li name="step3"  class="off"><span class="step3" label="完成提交"></span></li>
+        </ul>
+    </div>
+    <div id="loading">
+        <div class="loading-item"></div>
+    </div>
+</div>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.easing.1.3.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/createjs-2015.11.26.min.js"></script>
+<script src="data/js/config.js"></script>
+<script src="data/js/common.js"></script>
+<script src="data/js/main.js"></script>
+<script>
+var global_com = new Common();
+var loadImages = Config.loadImages;
+loadImages = loadImages.concat(["member/entry_complete_background_mask.png","member/entry_complete_baloon.png","member/entry_complete_text1.png","member/entry_complete_title.png","member/heart_2.png","member/heart_3.png","member/heart_4.png","member/heart_5.png","member/heart_6.png","member/heart_7.png","member/heart_8.png","member/heart_small.png","member/sprites.png","member/step1_off.png","member/step1_on.png","member/step2_off.png","member/step2_on.png","member/step3_off.png","member/step3_on.png","member/tap_btn_txt.png","member/tap_caution.png","member/tap_sprites.png","member/tap_txt.png"]);
+var query = global_com.getQueryString();
+global_view.init(
+    global_com
+    ,loadImages
+    ,false
+    ,(query==null || query.network==undefined || query.network=="")?null:query.network
+    ,function(){
+        //loading_complete、entry_init_complete、entry.show_complete後に呼ばれる
+//        global_entry.gotoPage("page2");
+/*
+        global_api.gid = "tdcazvdz";
+        global_api.uid = "386";
+        $("#step").hide();
+        global_api.on("connection_success", function(){
+            $("#progress").hide();
+            $("#entry").fadeOut(500);
+            $("#player").fadeIn(500);
+            global_player.data = {};
+            global_player.data.turn_id = "2";
+        });
+        global_api.connection();*/
+    }
+);
+</script>
+<script src="/scripts/action_cable.js" ></script>
+<script src="/scripts/cable.self.js" ></script>
+<script src="data/js/megapix-image.js"></script>
+<script src="data/js/exif.js"></script>
+<script src="data/js/hammer.min.js"></script>
+<script src="data/js/touchphoto.js"></script>
+<script src="data/js/api.js"></script>
+<script src="data/js/common-entry.js"></script>
+<script src="data/js/member-entry.js"></script>
+<script src="data/js/common-player.js"></script>
+<script src="data/js/member-player.js"></script>
+<script src="data/js/jweixin-1.0.0.js"></script>
+<script src="data/js/wechat.js"></script>
+<script>
+var global_api = new API();
+var global_entry = new Entry();
+var global_player = new Player();
+
+if(query==null || query.gid==undefined || query.gid=="") location.href = Config.topUrl;
+
+global_api.on("init_complete", function(e, data){
+    console.log("init_complete");
+    global_entry.on("entry_init_complete", function(e, data){
+console.log("entry_init_complete");
+        global_player.on("start_loading", function(e, data){
+            console.log("start_loading");
+            $("#entry").fadeOut(500);
+            $("#player").fadeIn(500);
+        });
+        global_player.on("play_complete", function(e, data){
+            //console.log("play_complete");
+            $("#player .float").fadeIn(500);
+        });
+        global_player.init(global_api, global_com);
+    });
+    global_entry.init(global_api, global_com);
+});
+global_api.init({leader:false, gid:query.gid});
+if(query!=null && query.debug!=undefined && query.debug=="1"){
+    (function(url){
+        var a, m;
+        a=document.createElement("script");
+        m=document.getElementsByTagName("script")[0];
+        a.async=1;
+        a.src=url;
+        m.parentNode.insertBefore(a, m);
+    })("/data/js/console_log.js");
+}
+</script>
+</body>
+</html>
+
+
+
+

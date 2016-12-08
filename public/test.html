@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<script src="/scripts/action_cable.js" ></script>
+<script src="/scripts/cable.self.js" ></script>
+<script src="data/js/jquery-2.1.1.min.js"></script>
+<script src="data/js/jquery.easing.1.3.js"></script>
+<script src="data/js/jquery.class.min.js"></script>
+<script src="data/js/preloadjs-0.6.2.min.js"></script>
+<script src="data/js/common.js"></script>
+<title>Leader</title>
+</head>
+<body>
+<script>
+$(function () { 
+//    alert( typeof(App.cable.subscriptions.create) ); 
+    App.drift = App.cable.subscriptions.create({ 
+    channel: "DriftChannel", 
+    user_id: "1" 
+    },{ 
+    connected: function() { 
+        console.log("connected!"); 
+        alert("connected!"); 
+    }, 
+        disconnected: function() { 
+        console.log("disconnected!"); 
+        alert("disconnected!"); 
+    } 
+    }); 
+});
+/*
+var Test = Class.get({
+    init:function(){
+        var queue = new QueueHandler();
+        queue.add(this, this.showUploadUserImage, "complete");
+        for(var i=0; i < 5; i++)
+        {
+            queue.push([i]);
+        }
+        setTimeout(function(){
+            queue.push([5]);            
+        },200);
+        setTimeout(function(){
+            for(var i=6; i < 9; i++)
+            {
+                queue.push([i]);
+            }
+        },300);
+    }
+    ,showUploadUserImage:function(number)
+    {
+        var t = this;
+        console.log(number + "is start");
+        setTimeout(function(){
+           console.log(number + "is end");
+            t.trigger("complete");
+        },1500);
+    }
+});
+var test = new Test();
+test.init();
+*/
+</script>
+</body>
+</html>

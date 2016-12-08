@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GlicoR5</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="HuWkytzIlqHdjkGri/amAk8yiaQSNO5A8YxaJfL2UDQbT+p/pgoFie8J/4s2wnnUSnuFmcTEFpjD6v7r3u4myA==" />
+
+<script src="/scripts/jquery.js" ></script>
+<script src="/scripts/action_cable.js" ></script>
+<script src="/scripts/cable.self.js" ></script>
+<script src="/scripts/jquery_ujs.js" ></script>
+</head>
+
+<body>
+<style type="text/css">
+div#qr, div#content{
+  margin: 0 auto;
+  text-align: center;
+}
+
+div#content{
+  margin-top: 30px;
+}
+</style>
+
+<div id="content">
+	<h1>ユーザーAPI Test</h1>
+  <img id="uploaded_img" src="" alt="Original" />
+  <p>group id: <span id="group_id"></span></p>
+  <p>user_id: <span id="user_id"></span></p>
+  <br/>
+
+  <h2>Socket API Test<h2>
+      <span id="drift_boat" data-group-id="" data-user-id=""></span>
+
+      <div>
+				
+        <p>
+        <a id="user_network" href="#">user_network</a>
+        <span id="user_network"></span>
+        </p>
+				
+        <p>
+        <a id="user_turn" href="#">user_turn</a>
+        <span id="user_turn_success"></span>
+        </p>
+				
+				<p>
+        user_upload_close
+        <span id="user_upload_close_success"></span>
+        </p>
+				
+				<p>
+					user_turn_reset_success
+					<span id="user_turn_reset_success"></span>
+        </p>
+
+        <p>
+        <a id="loading_start" href="#">loading_start</a>
+        <span id="loading_start_success"></span>
+        </p>
+
+        <p>
+        <a id="user_download_success" href="#">user_download_success</a>
+        <span id="user_download_success"></span>
+        </p>
+
+				<p>
+					<a id="animation_start" href="#">animatin_start</a>
+					<span id="animation_start"></span>
+        <span id="animation_update"></span>
+        </p>
+
+				<p>
+					share_ok
+					<span id="share_ok_success"></span>
+				</p>
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+$(document).ready(function(){
+    var group_id = window.location.search.split("/")[2];
+    var user_id = window.location.search.split("/")[3];
+    $("#uploaded_img").attr("src", window.location.search.substring(1));
+    $("span#group_id").text(group_id);
+    $("span#user_id").text(user_id);
+    $("form input#gid").val(group_id);
+    document.cookie="group_id="+group_id;
+    $("span#drift_boat").attr("data-group-id", group_id);
+    $("span#drift_boat").attr("data-user-id", user_id);
+    })
+  </script>
+  <script src="/js/ws_test_v2.js"></script>
+  </body>
+  </html>

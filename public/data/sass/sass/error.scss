@@ -1,0 +1,37 @@
+@import "compass/reset", "_common";
+
+#wrapper
+{
+    text-align: center;
+    .main {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .btn-set {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 111px;
+        padding-left: 4%;
+        background-repeat: repeat;
+        line-height: 0px;
+
+        a {
+            display: block;
+            float: left;
+            height: 55px;
+            text-align: center;
+            border-radius: 10px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin-top: 19px;
+            background-color: #90766d;
+            background-image: url(/data/images/common/ok_txt.png);
+            background-size: 37px 17px;
+            margin-left: 2.6666666667%;
+            margin-top: 20px;
+            width: 86.6666666667%;
+        }
+
+    }    
+}
